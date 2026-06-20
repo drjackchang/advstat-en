@@ -1,0 +1,266 @@
+---
+title: "Topic 1：R Setup & Data Import"
+subtitle: "Installation, RStudio Interface, Basic Operations, Importing ems_main.csv"
+execute:
+  warning: false
+  message: false
+  echo: true
+---
+
+## Learning Objectives
+
+By the end of this topic, you should be able to:
+
+1.  Install R and RStudio successfully
+2.  Navigate the four RStudio panels
+3.  Execute basic R syntax
+4.  Import `ems_main.csv` and inspect the data structure
+
+------------------------------------------------------------------------
+
+## 1. Installing R and RStudio
+
+::: callout-important
+**Installation order matters: install R first, then RStudio.** RStudio is the interface; R is the engine.
+:::
+
+### Install R
+
+1.  Go to <https://cran.r-project.org/>
+2.  Select your operating system (Windows / macOS)
+3.  Download the latest version (currently R 4.4.x) and install using all default settings
+
+### Install RStudio
+
+1.  Go to <https://posit.co/download/rstudio-desktop/>
+2.  Download the free RStudio Desktop version
+3.  Install using all default settings
+
+Once installed, **only open RStudio** — you do not need to open R separately.
+
+------------------------------------------------------------------------
+
+## 2. The RStudio Interface
+
+When RStudio opens, you will see four panels:
+
+| Panel        | Name              | Purpose                          |
+|:-------------|:------------------|:---------------------------------|
+| Top-left     | **Script Editor** | Write and save your code         |
+| Bottom-left  | **Console**       | Execute commands and view output |
+| Top-right    | **Environment**   | View loaded objects and datasets |
+| Bottom-right | **Files / Plots** | File management and plot output  |
+
+::: callout-tip
+**Best practice:** Always write code in the Script Editor (top-left), not directly in the Console. This way your analysis is saved, reproducible, and easy to revise.
+:::
+
+------------------------------------------------------------------------
+
+## 3. Your First R Commands
+
+Paste the following into the Script Editor, select it, and press `Ctrl + Enter` (Mac: `Cmd + Enter`) to run:
+
+```{r}
+# This is a comment — R ignores everything after #
+1 + 1
+
+# Assign a value to a variable
+x <- 10
+y <- 3
+x + y
+x * y
+x / y
+
+# Text (character string)
+name <- "EMS Statistics"
+print(name)
+```
+
+::: callout-note
+`<-` is R's assignment operator — it stores the value on the right into the variable on the left. You can also use `=`, but `<-` is the R convention.
+
+Keyboard shortcut: `Alt + -` (Mac: `Option + -`)
+:::
+
+------------------------------------------------------------------------
+
+## 4. Installing and Loading Packages
+
+R's power comes from packages. The packages used in this course need to be **installed once**, then **loaded at the start of each session**.
+
+```{r}
+#| eval: false
+
+# Install packages (run once per computer)
+install.packages("tidyverse")    # Data wrangling and visualization
+install.packages("gt")           # APA-format tables
+install.packages("psych")        # Descriptive statistics
+install.packages("car")          # Levene's test and regression diagnostics
+install.packages("effectsize")   # Effect size calculation
+install.packages("rstatix")      # Nonparametric tests and post-hoc comparisons
+install.packages("pROC")         # ROC curves
+install.packages("ResourceSelection") # Hosmer-Lemeshow test
+install.packages("mediation")    # Mediation analysis
+install.packages("ez")           # Repeated measures ANOVA
+install.packages("geepack")      # GEE
+install.packages("lavaan")       # SEM
+install.packages("semPlot")      # SEM path diagrams
+install.packages("lm.beta")      # Standardized regression coefficients
+install.packages("corrplot")     # Correlation matrix heatmap
+```
+
+```{r}
+#| eval: false
+
+# Load packages (run at the start of every R session)
+library(tidyverse)
+library(gt)
+```
+
+::: callout-important
+`install.packages()` = download and install (once only)
+
+`library()` = activate for use (every session)
+
+This is the most common source of confusion for beginners.
+:::
+
+------------------------------------------------------------------------
+
+## 5. Data Types in R
+
+R has several basic data types that correspond to variable types in statistics:
+
+```{r}
+# Numeric (continuous variable)
+age           <- 34
+response_time <- 8.5
+
+# Character (raw input for categorical variables)
+gender <- "Male"
+level  <- "EMT-P"
+
+# Factor (correct format for categorical variables in analysis)
+level_f <- factor(level, levels = c("EMT-1", "EMT-2", "EMT-P"))
+
+# Logical
+is_senior <- age > 40
+print(is_senior)   # FALSE
+
+# Check data type
+class(age)      # "numeric"
+class(gender)   # "character"
+class(level_f)  # "factor"
+```
+
+::: callout-tip
+**Always check before analysis:** Categorical variables (gender, EMT level, district) must be stored as `factor` in R. If left as character strings, many statistical functions will either throw an error or produce incorrect results.
+:::
+
+------------------------------------------------------------------------
+
+## 6. Importing the Main Dataset
+
+This course uses a single dataset throughout the entire semester: `ems_main.csv`.
+
+### Steps
+
+1.  Place `ems_main.csv` in a `data/` subfolder inside your project directory
+2.  Run the following code:
+
+```{r}
+#| eval: false
+
+# Import CSV
+ems <- read.csv("data/ems_main.csv",
+                fileEncoding = "UTF-8",
+                stringsAsFactors = FALSE)
+
+# Check dimensions (should be 200 rows × 27 columns)
+dim(ems)
+
+# View first six rows
+head(ems)
+
+# Inspect data structure
+str(ems)
+
+# Basic summary statistics
+summary(ems)
+```
+
+### Convert categorical variables to factors
+
+```{r}
+#| eval: false
+
+# Do this immediately after importing — required for correct analysis
+ems$gender   <- factor(ems$gender,
+                        levels = c("Male", "Female"))
+ems$level    <- factor(ems$level,
+                        levels = c("EMT-1", "EMT-2", "EMT-P"))
+ems$district <- factor(ems$district,
+                        levels = c("North", "Central",
+                                   "South", "East"))
+ems$shift    <- factor(ems$shift,
+                        levels = c("Day", "Night", "Rotating"))
+
+# Confirm conversion
+str(ems)
+levels(ems$level)   # Should show: "EMT-1" "EMT-2" "EMT-P"
+```
+
+------------------------------------------------------------------------
+
+## 7. Dataset Variable Dictionary
+
+| Variable | Description | Type | Unit / Notes |
+|:---|:---|:---|:---|
+| `id` | Personnel ID | Character | EMS001–EMS200 |
+| `gender` | Sex | Categorical | Male / Female |
+| `age` | Age | Continuous | Years |
+| `level` | EMT certification level | Categorical | EMT-1 / EMT-2 / EMT-P |
+| `years` | Years of service | Continuous | Years |
+| `district` | Service district | Categorical | North / Central / South / East |
+| `shift` | Shift type | Categorical | Day / Night / Rotating |
+| `monthly_cases` | Monthly call volume | Continuous | Calls |
+| `night_shifts` | Monthly night shifts | Continuous | Shifts |
+| `overtime_hours` | Monthly overtime | Continuous | Hours |
+| `bmi` | Body Mass Index | Continuous | kg/m² |
+| `sbp` | Systolic blood pressure | Continuous | mmHg |
+| `dbp` | Diastolic blood pressure | Continuous | mmHg |
+| `sleep_hrs` | Average daily sleep | Continuous | Hours |
+| `sleep_qual` | Sleep quality | Continuous | PSQI 0–21; higher = worse |
+| `stress_vas` | Subjective stress | Continuous | VAS 0–10 |
+| `mbi_ee` | MBI Emotional Exhaustion | Continuous | 0–6 |
+| `mbi_dp` | MBI Depersonalization | Continuous | 0–6 |
+| `mbi_pa` | MBI Personal Accomplishment | Continuous | 0–6 |
+| `job_sat` | Job satisfaction | Continuous | 1–5 |
+| `mist_pre` | Pre-training MIST score | Continuous | 0–100 |
+| `mist_post` | Post-training MIST score | Continuous | 0–100 |
+| `supervisor_score` | Supervisor rating | Continuous | 0–100 |
+| `response_time` | On-scene response time | Continuous | Minutes |
+| `case_severity` | Case severity | Categorical | 1=Minor / 2=Moderate / 3=Severe / 4=OHCA |
+| `ohca_survival` | OHCA survival status | Binary | 0=Death / 1=Survival (OHCA cases only) |
+| `occ_injury` | Occupational injury (past year) | Binary | 0=No / 1=Yes |
+
+------------------------------------------------------------------------
+
+## Weekly Assignment
+
+Using `ems_main.csv`, complete the following tasks and submit your R code with output:
+
+**Q1** Run `str(ems)` and describe: what data type is each categorical variable *before* converting to factor?
+
+**Q2** Run `summary(ems)` and find the following values: - Minimum, maximum, and median of `response_time` - Mean of `mbi_ee`
+
+**Q3** Use `table()` to tabulate `level` and `district` separately:
+
+```{r}
+#| eval: false
+table(ems$level)
+table(ems$district)
+```
+
+**Q4 Reflection:** The `ohca_survival` variable contains many missing values (NA). Why? Under what circumstances does this variable have meaningful values?

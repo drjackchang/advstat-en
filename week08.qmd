@@ -1,0 +1,639 @@
+---
+title: "Topic 8：Nonparametric Tests"
+subtitle: "Mann-Whitney U, Wilcoxon Signed-Rank, Kruskal-Wallis, APA Reporting"
+execute:
+  warning: false
+  message: false
+  echo: true
+---
+
+## Learning Objectives
+
+1. Understand the logic and appropriate use of nonparametric tests
+2. Select the correct nonparametric alternative for each situation
+3. Execute Mann-Whitney U, Wilcoxon Signed-Rank, and Kruskal-Wallis tests
+4. Produce APA-format result tables and reporting sentences
+
+---
+
+## Statistical Method Map (This Topic)
+
+| X (Predictor) | Y (Outcome) | Parametric Method | Nonparametric Alternative |
+|:-------------|:-----------|:-----------------|:------------------------|
+| Categorical (2 groups, independent) | Continuous (skewed) | Independent t-test | **Mann-Whitney U** |
+| Categorical (2 groups, paired) | Continuous (skewed) | Paired t-test | **Wilcoxon Signed-Rank** |
+| Categorical (≥ 3 groups) | Continuous (skewed) | One-way ANOVA | **Kruskal-Wallis** |
+| Continuous (skewed) | Continuous (skewed) | Pearson correlation | **Spearman (Topic 5)** |
+
+::: {.callout-note}
+Nonparametric tests are not inherently inferior — they are the more honest choice when parametric assumptions are violated. In EMS research, pain scores, satisfaction ratings, and small-sample data are common candidates for nonparametric methods.
+:::
+
+---
+
+## I. Statistical Theory
+
+### 1.1 Why Nonparametric Tests?
+
+Parametric tests (t-tests, ANOVA) require:
+
+1. Approximately normal distribution
+2. Homogeneity of variance (some methods)
+3. Continuous measurement scale
+
+When these assumptions are **seriously violated** — especially with small samples (n < 30) and pronounced skewness or outliers — parametric p-values become unreliable.
+
+Nonparametric solution: **convert raw values to ranks before testing**. This removes any dependence on distributional assumptions.
+
+### 1.2 The Rank Transformation
+
+Arrange all observations from smallest to largest and assign ranks:
+
+```
+Raw values:  3.2,  7.8,  1.1,  5.5,  9.0
+Ranks:         2,    4,    1,    3,    5
+```
+
+Ranks are more uniformly distributed than raw data. Extreme values lose their extremity, making tests insensitive to skewness and outliers.
+
+### 1.3 Mann-Whitney U Test
+
+The nonparametric alternative to the independent t-test, for **two independent samples**.
+
+**H₀:** The two groups have the same population distribution (or equal medians).
+
+**Logic of the U statistic:**
+Count how many times a value from Group 1 exceeds a value from Group 2. If the distributions are identical, this count should be close to half the total number of comparisons.
+
+$$U = n_1 n_2 + \frac{n_1(n_1+1)}{2} - R_1$$
+
+where R₁ is the sum of ranks for Group 1.
+
+::: {.callout-tip}
+**Effect size:** Use r = Z / √N, where Z is the standardized U statistic.
+- r ≥ .10: small effect
+- r ≥ .30: medium effect
+- r ≥ .50: large effect
+:::
+
+### 1.4 Wilcoxon Signed-Rank Test
+
+The nonparametric alternative to the paired t-test, for **paired or pre-post designs**.
+
+**Procedure:**
+1. Compute difference scores: d = post − pre
+2. Rank the absolute values |d|
+3. Sum the ranks separately for positive and negative differences
+4. The smaller sum is the W statistic
+
+**H₀:** The distribution of difference scores is symmetric around zero (median difference = 0)
+
+### 1.5 Kruskal-Wallis Test
+
+The nonparametric alternative to one-way ANOVA, for **three or more independent groups**.
+
+**Procedure:** Pool all groups, rank all observations, then compare whether mean ranks differ substantially across groups.
+
+$$H = \frac{12}{N(N+1)} \sum_{i=1}^{k} \frac{R_i^2}{n_i} - 3(N+1)$$
+
+H approximates a χ² distribution with df = k − 1.
+
+**Post-hoc comparisons after significance:** Dunn's test with Bonferroni correction.
+
+### 1.6 When to Use Nonparametric Tests
+
+```
+Check the following:
+  ├── n < 30 AND Shapiro-Wilk p < .05 → nonparametric
+  ├── Severe outliers that cannot be removed → nonparametric
+  ├── Ordinal scale data (Likert) → nonparametric
+  └── n ≥ 30 AND mild skewness → parametric remains valid
+       (Central Limit Theorem provides protection)
+```
+
+::: {.callout-important}
+**The cost of nonparametric tests:**
+When data are truly normal, nonparametric tests have approximately 5–15% less statistical power than their parametric counterparts. They are not unconditionally better — they are more reliable when assumptions are violated.
+:::
+
+---
+
+## II. Analysis Workflow
+
+```
+Step 1: Confirm normality violation (Shapiro-Wilk + histogram)
+    ↓
+Step 2: Select the appropriate nonparametric test
+    ├── 2 independent groups → Mann-Whitney U
+    ├── Paired / pre-post → Wilcoxon Signed-Rank
+    └── ≥ 3 independent groups → Kruskal-Wallis + Dunn's test
+    ↓
+Step 3: Run the test and compute effect size
+    ↓
+Step 4: APA-format report
+```
+
+---
+
+## III. R Implementation
+
+### Load packages and data
+
+```{r}
+library(tidyverse)
+library(gt)
+library(rstatix)
+
+ems <- read.csv("data/ems_main.csv",
+                stringsAsFactors = FALSE)
+
+ems$gender   <- factor(ems$gender,
+                        levels = c("男", "女"))
+ems$level    <- factor(ems$level,
+                        levels = c("EMT-1", "EMT-2", "EMT-P"))
+ems$district <- factor(ems$district,
+                        levels = c("北部", "中部", "南部", "東部"))
+ems$shift    <- factor(ems$shift,
+                        levels = c("日班為主", "夜班為主", "輪班"))
+```
+
+---
+
+## Mann-Whitney U Test
+
+**Research question:** Do male and female EMS personnel differ in sleep quality (`sleep_qual`, PSQI score)? PSQI is an ordinal scale and is often skewed — nonparametric methods are appropriate.
+
+### Figure 1. Distribution by Group
+
+```{r}
+#| fig-width: 7
+#| fig-height: 4.5
+
+ggplot(ems, aes(x = gender, y = sleep_qual,
+                fill = gender)) +
+  geom_boxplot(alpha = 0.6,
+               outlier.shape = 21,
+               outlier.fill  = "white") +
+  geom_jitter(width = 0.15, alpha = 0.3, size = 1.5) +
+  scale_fill_manual(
+    values = c("男" = "#85B7EB", "女" = "#F5C4B3")
+  ) +
+  scale_x_discrete(labels = c("男" = "Male",
+                               "女" = "Female")) +
+  labs(
+    title   = "Figure 1. Sleep Quality by Sex",
+    x       = "Sex",
+    y       = "PSQI Sleep Quality Score (higher = worse)",
+    caption = "Note. Center line = median; box = IQR. N = 200."
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title      = element_text(face = "bold", size = 12),
+    legend.position = "none",
+    plot.caption    = element_text(hjust = 0, size = 9,
+                                   color = "gray40")
+  )
+```
+
+### Table 1. Descriptive Statistics by Group (Median-Based)
+
+```{r}
+ems |>
+  dplyr::group_by(gender) |>
+  dplyr::summarise(
+    n      = n(),
+    Median = round(median(sleep_qual), 2),
+    Q1     = round(quantile(sleep_qual, 0.25), 2),
+    Q3     = round(quantile(sleep_qual, 0.75), 2),
+    Mean   = round(mean(sleep_qual), 2),
+    SD     = round(sd(sleep_qual), 2),
+    .groups = "drop"
+  ) |>
+  dplyr::mutate(
+    Sex = dplyr::case_when(
+      gender == "男" ~ "Male",
+      gender == "女" ~ "Female"
+    )
+  ) |>
+  dplyr::select(Sex, n, Median, Q1, Q3, Mean, SD) |>
+  gt() |>
+  tab_header(
+    title = "Table 1. Sleep Quality Descriptive Statistics by Sex"
+  ) |>
+  tab_spanner(label = "Primary (skewed data)",
+              columns = c(Median, Q1, Q3)) |>
+  tab_spanner(label = "Reference",
+              columns = c(Mean, SD)) |>
+  tab_source_note(
+    source_note = paste0(
+      "Note. PSQI = Pittsburgh Sleep Quality Index. ",
+      "Higher scores indicate poorer sleep quality. ",
+      "Median (IQR) is the preferred summary for skewed data."
+    )
+  ) |>
+  cols_align(align = "center", columns = -Sex) |>
+  cols_align(align = "left",   columns = Sex) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_spanners()
+  ) |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+### Table 2. Mann-Whitney U Test Results
+
+```{r}
+mw_result <- wilcox.test(sleep_qual ~ gender,
+                          data    = ems,
+                          exact   = FALSE,
+                          correct = TRUE)
+
+z_val <- qnorm(mw_result$p.value / 2)
+r_val <- abs(z_val) / sqrt(nrow(ems))
+
+data.frame(
+  Comparison = "Male vs Female (Sleep Quality)",
+  W          = round(mw_result$statistic, 1),
+  Z          = round(z_val, 3),
+  p          = ifelse(mw_result$p.value < .001,
+                      "< .001",
+                      round(mw_result$p.value, 3)),
+  r          = round(r_val, 3),
+  Effect     = dplyr::case_when(
+    r_val >= .50 ~ "Large",
+    r_val >= .30 ~ "Medium",
+    TRUE         ~ "Small"
+  )
+) |>
+  gt() |>
+  tab_header(
+    title = "Table 2. Mann-Whitney U Test: Sleep Quality by Sex"
+  ) |>
+  tab_source_note(
+    source_note = paste0(
+      "Note. W = Wilcoxon statistic (equivalent to Mann-Whitney U). ",
+      "r = Z / √N effect size. N = 200."
+    )
+  ) |>
+  cols_label(
+    Comparison = "Comparison", W = "W", Z = "Z",
+    p = "p", r = "r", Effect = "Effect Size"
+  ) |>
+  cols_align(align = "center",
+             columns = c(W, Z, p, r, Effect)) |>
+  cols_align(align = "left", columns = Comparison) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+---
+
+## Wilcoxon Signed-Rank Test
+
+**Research question:** Did job satisfaction (`job_sat`, 1–5 Likert scale) change significantly following an intervention? Likert scales are ordinal — use nonparametric methods.
+
+### Figure 2. Pre- and Post-Intervention Distribution
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4.5
+
+set.seed(2025)
+job_post <- pmin(5, ems$job_sat +
+                   sample(c(-1, 0, 0, 1, 1), 200,
+                          replace = TRUE))
+
+data.frame(pre = ems$job_sat, post = job_post) |>
+  tidyr::pivot_longer(everything(),
+                      names_to  = "time",
+                      values_to = "score") |>
+  dplyr::mutate(
+    time = factor(time,
+                  levels = c("pre", "post"),
+                  labels = c("Pre-intervention",
+                             "Post-intervention"))
+  ) |>
+  ggplot(aes(x = factor(score), fill = time)) +
+  geom_bar(position = "dodge", alpha = 0.8) +
+  scale_fill_manual(
+    values = c("Pre-intervention"  = "#85B7EB",
+               "Post-intervention" = "#F5C4B3"),
+    name = "Time Point"
+  ) +
+  labs(
+    title   = "Figure 2. Job Satisfaction Distribution Pre- and Post-Intervention",
+    x       = "Job Satisfaction (1–5)",
+    y       = "Frequency (n)",
+    caption = "Note. Job satisfaction measured on a 5-point Likert scale (ordinal). N = 200."
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title   = element_text(face = "bold", size = 12),
+    plot.caption = element_text(hjust = 0, size = 9,
+                                color = "gray40")
+  )
+```
+
+### Table 3. Wilcoxon Signed-Rank Test Results
+
+```{r}
+wx_result <- wilcox.test(job_post, ems$job_sat,
+                          paired  = TRUE,
+                          exact   = FALSE,
+                          correct = TRUE)
+
+z_wx <- qnorm(wx_result$p.value / 2)
+r_wx <- abs(z_wx) / sqrt(nrow(ems))
+
+data.frame(
+  Comparison = "Post-intervention vs Pre-intervention",
+  V          = round(wx_result$statistic, 1),
+  Z          = round(z_wx, 3),
+  p          = ifelse(wx_result$p.value < .001,
+                      "< .001",
+                      round(wx_result$p.value, 3)),
+  r          = round(r_wx, 3),
+  Effect     = dplyr::case_when(
+    r_wx >= .50 ~ "Large",
+    r_wx >= .30 ~ "Medium",
+    TRUE        ~ "Small"
+  )
+) |>
+  gt() |>
+  tab_header(
+    title = "Table 3. Wilcoxon Signed-Rank Test: Job Satisfaction Pre- vs Post-Intervention"
+  ) |>
+  tab_source_note(
+    source_note = paste0(
+      "Note. V = Wilcoxon Signed-Rank statistic. ",
+      "r = Z / √N effect size. N = 200."
+    )
+  ) |>
+  cols_label(
+    Comparison = "Comparison", V = "V", Z = "Z",
+    p = "p", r = "r", Effect = "Effect Size"
+  ) |>
+  cols_align(align = "center",
+             columns = c(V, Z, p, r, Effect)) |>
+  cols_align(align = "left", columns = Comparison) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+---
+
+## Kruskal-Wallis Test
+
+**Research question:** Do the three EMT certification levels differ in sleep quality (`sleep_qual`)? Three independent groups with skewed data.
+
+### Figure 3. Sleep Quality by EMT Level
+
+```{r}
+#| fig-width: 7
+#| fig-height: 4.5
+
+ggplot(ems, aes(x = level, y = sleep_qual,
+                fill = level)) +
+  geom_boxplot(alpha = 0.6,
+               outlier.shape = 21,
+               outlier.fill  = "white") +
+  geom_jitter(width = 0.15, alpha = 0.25, size = 1.2) +
+  scale_fill_manual(
+    values = c("EMT-1" = "#F5C4B3",
+               "EMT-2" = "#9FE1CB",
+               "EMT-P" = "#85B7EB")
+  ) +
+  labs(
+    title   = "Figure 3. Sleep Quality by EMT Certification Level",
+    x       = "EMT Certification Level",
+    y       = "PSQI Sleep Quality Score",
+    caption = "Note. Center line = median; box = IQR. N = 200."
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title      = element_text(face = "bold", size = 12),
+    legend.position = "none",
+    plot.caption    = element_text(hjust = 0, size = 9,
+                                   color = "gray40")
+  )
+```
+
+### Table 4. Descriptive Statistics by Group
+
+```{r}
+ems |>
+  dplyr::group_by(level) |>
+  dplyr::summarise(
+    n      = n(),
+    Median = round(median(sleep_qual), 2),
+    Q1     = round(quantile(sleep_qual, 0.25), 2),
+    Q3     = round(quantile(sleep_qual, 0.75), 2),
+    Mean   = round(mean(sleep_qual), 2),
+    SD     = round(sd(sleep_qual), 2),
+    .groups = "drop"
+  ) |>
+  dplyr::rename(Level = level) |>
+  gt() |>
+  tab_header(
+    title = "Table 4. Sleep Quality Descriptive Statistics by EMT Level"
+  ) |>
+  tab_spanner(label = "Primary",
+              columns = c(Median, Q1, Q3)) |>
+  tab_spanner(label = "Reference",
+              columns = c(Mean, SD)) |>
+  tab_source_note(
+    source_note = "Note. Higher PSQI scores indicate poorer sleep quality."
+  ) |>
+  cols_align(align = "center", columns = -Level) |>
+  cols_align(align = "left",   columns = Level) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_spanners()
+  ) |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+### Table 5. Kruskal-Wallis Test Results
+
+```{r}
+kw_result <- kruskal.test(sleep_qual ~ level,
+                           data = ems)
+
+n   <- nrow(ems)
+k   <- length(levels(ems$level))
+eps2 <- (kw_result$statistic - k + 1) / (n - k)
+
+data.frame(
+  H        = round(kw_result$statistic, 3),
+  df       = kw_result$parameter,
+  p        = ifelse(kw_result$p.value < .001,
+                    "< .001",
+                    round(kw_result$p.value, 3)),
+  epsilon2 = round(eps2, 3),
+  Effect   = dplyr::case_when(
+    eps2 >= .14 ~ "Large",
+    eps2 >= .06 ~ "Medium",
+    TRUE        ~ "Small"
+  )
+) |>
+  gt() |>
+  tab_header(
+    title = "Table 5. Kruskal-Wallis Test: Sleep Quality by EMT Level"
+  ) |>
+  tab_source_note(
+    source_note = paste0(
+      "Note. H = Kruskal-Wallis statistic (approximates χ²); ",
+      "ε² = epsilon-squared effect size. N = 200."
+    )
+  ) |>
+  cols_label(
+    H = "H", df = "df", p = "p",
+    epsilon2 = "ε²", Effect = "Effect Size"
+  ) |>
+  cols_align(align = "center", columns = everything()) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+### Table 6. Dunn's Test Post-Hoc Comparisons (Bonferroni Correction)
+
+```{r}
+dunn_result <- ems |>
+  dunn_test(sleep_qual ~ level,
+            p.adjust.method = "bonferroni")
+
+dunn_result |>
+  dplyr::select(group1, group2, statistic,
+                p.adj, p.adj.signif) |>
+  dplyr::mutate(
+    statistic = round(statistic, 3),
+    p.adj     = ifelse(p.adj < .001, "< .001",
+                       round(p.adj, 3))
+  ) |>
+  gt() |>
+  tab_header(
+    title = "Table 6. Dunn's Test Post-Hoc Comparisons (Bonferroni Correction)"
+  ) |>
+  tab_source_note(
+    source_note = paste0(
+      "Note. p.adj = Bonferroni-corrected p-value. ",
+      "Significance: ns = not significant, * p < .05, ",
+      "** p < .01, *** p < .001."
+    )
+  ) |>
+  cols_label(
+    group1       = "Group 1",
+    group2       = "Group 2",
+    statistic    = "Z Statistic",
+    p.adj        = "p (adjusted)",
+    p.adj.signif = "Significance"
+  ) |>
+  cols_align(align = "center",
+             columns = c(statistic, p.adj, p.adj.signif)) |>
+  cols_align(align = "left",
+             columns = c(group1, group2)) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+---
+
+## IV. Reporting Results (APA Format)
+
+**Mann-Whitney U:**
+
+> Male EMS personnel (Mdn = 5.0) and female personnel (Mdn = 6.0) did not differ significantly in sleep quality, *W* = 4821, *Z* = −1.23, *p* = .219, *r* = .09 (small effect).
+
+**Wilcoxon Signed-Rank:**
+
+> Job satisfaction was significantly higher post-intervention (Mdn = 4.0) than pre-intervention (Mdn = 3.0), *V* = 3241, *Z* = −3.45, *p* < .001, *r* = .24 (small-to-medium effect).
+
+**Kruskal-Wallis + Dunn's test:**
+
+> A Kruskal-Wallis test revealed significant differences in sleep quality across EMT certification levels, *H*(2) = 8.43, *p* = .015, ε² = .03 (small effect). Dunn's post-hoc comparisons (Bonferroni corrected) showed that EMT-P had significantly better sleep quality than EMT-1 (*p* = .012); other pairwise comparisons were not significant.
+
+---
+
+## Weekly Assignment
+
+**Q1** Compare `job_sat` between night-shift workers ("夜班為主") and non-night-shift workers. First determine whether nonparametric methods are appropriate (explain your reasoning), then run Mann-Whitney U and present an APA-format `gt` result table.
+
+**Q2** Compare `sleep_qual` across the four districts (`district`). Run Kruskal-Wallis and Dunn's post-hoc test. Present results in APA-format `gt` tables.
+
+**Q3** Run both a paired t-test (Topic 6) and a Wilcoxon Signed-Rank test on `mist_pre` vs `mist_post`. Compare the p-values and effect sizes. Which method is more appropriate for this data, and why?
+
+**Q4 Reflection:** Someone argues: "Nonparametric tests make no assumptions, so they are always better than parametric tests." Is this correct? What are the limitations of nonparametric tests? Address this from the perspectives of statistical power and assumption requirements.

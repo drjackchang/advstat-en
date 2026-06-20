@@ -1,0 +1,429 @@
+---
+title: "Advanced Applied Statistics"
+subtitle: "National Taipei University of Nursing and Health Sciences　｜　Graduate Institute of Health Technology"
+execute:
+  warning: false
+  message: false
+  echo: false
+---
+
+## Instructor
+
+**Jack Yu-Tung Chang, PhD　｜　Assistant Professor** College of Health Technology, National Taipei University of Nursing and Health Sciences (NTUNHS)
+
+Education：PhD, Health Promotion & Health Education, NTNU　｜　MS, Biomedical Statistics, NTU　｜　BParamedSc(Hons), Monash University　｜　BS, Statistics, NTPU
+
+Research：EMS　｜　GIS　｜　Occupational Health (OHS)　｜　Behavioral Science
+
+EMS Experience：Taiwan EMT 20 yrs　｜　Australian Paramedic　｜　PHTLS Instructor / Faculty　｜　Disaster Manager
+
+✉️ [yutung\@ntunhs.edu.tw](mailto:yutung@ntunhs.edu.tw)
+
+------------------------------------------------------------------------
+
+## Course Overview
+
+This course uses R as the primary analytical tool, with EMS and health science contexts as the running thread. Topics range from descriptive statistics to structural equation modeling, with equal emphasis on statistical reasoning and hands-on practice. Each topic includes executable R code, example datasets, and an AI-powered homework feedback system. The final exam is a live coding exam using a single dataset.
+
+| Item               | Weight |
+|:-------------------|:-------|
+| Weekly assignments | 40%    |
+| Participation      | 20%    |
+| Final coding exam  | 40%    |
+
+------------------------------------------------------------------------
+
+## Topic & Statistical Method Navigator
+
+Click any row to see when and why to use that method.
+
+```{=html}
+<style>
+.nav-tbl { width:100%; border-collapse:collapse; font-size:13px; cursor:pointer; }
+.nav-tbl th { background:#f8f9fa; padding:8px 10px; text-align:left; font-weight:600; border-bottom:2px solid #dee2e6; font-size:12px; }
+.nav-tbl td { padding:7px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; line-height:1.5; }
+.nav-tbl tr:hover td { background:#f8f9fa; }
+.sec-hdr td { background:#e9ecef !important; font-weight:600; font-size:11px; letter-spacing:.05em; color:#6c757d; padding:5px 10px; }
+.badge-wk { display:inline-block; padding:2px 7px; border-radius:99px; font-size:11px; font-weight:500; }
+.bk-desc  { background:#d1ecf1; color:#0c5460; }
+.bk-inf   { background:#d4edda; color:#155724; }
+.bk-adv   { background:#e2d9f3; color:#432874; }
+.bk-base  { background:#fff3cd; color:#856404; }
+.bk-exam  { background:#f8d7da; color:#721c24; }
+.tip-box {
+  display:none; position:fixed; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:min(500px,92vw); background:#fff; border-radius:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,.2); z-index:9999;
+  padding:0; overflow:hidden;
+}
+.tip-hdr {
+  background:#2c3e50; color:#fff; padding:14px 18px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.tip-hdr .t-title { font-weight:600; font-size:14px; }
+.tip-hdr .t-close { cursor:pointer; font-size:22px; line-height:1; opacity:.8; }
+.tip-hdr .t-close:hover { opacity:1; }
+.tip-body { padding:16px 18px; font-size:13px; line-height:1.7; }
+.t-section {
+  font-weight:600; color:#2c3e50; margin:10px 0 4px;
+  font-size:11px; text-transform:uppercase; letter-spacing:.05em;
+}
+.t-tag {
+  display:inline-block; background:#e9ecef; border-radius:4px;
+  padding:2px 8px; font-size:11px; margin:2px 2px 2px 0;
+  font-family:monospace;
+}
+.tip-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.4); z-index:9998;
+}
+.tip-link { color:#0d6efd; text-decoration:none; font-size:12px; }
+.tip-link:hover { text-decoration:underline; }
+</style>
+
+<div class="tip-overlay" id="overlay" onclick="closeTip()"></div>
+<div class="tip-box" id="tipbox">
+  <div class="tip-hdr">
+    <span class="t-title" id="tip-title"></span>
+    <span class="t-close" onclick="closeTip()">×</span>
+  </div>
+  <div class="tip-body" id="tip-body"></div>
+</div>
+
+<table class="nav-tbl">
+<thead>
+<tr>
+  <th style="width:10%">Topic</th>
+  <th style="width:20%">X (Predictor)</th>
+  <th style="width:18%">Y (Outcome)</th>
+  <th style="width:28%">Statistical Method</th>
+  <th style="width:14%">Nonparametric Alt.</th>
+  <th style="width:10%">Materials</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="sec-hdr"><td colspan="6">🟡 Foundations</td></tr>
+<tr onclick="showTip('r_setup')">
+  <td><span class="badge-wk bk-base">Topic 1</span></td>
+  <td>—</td><td>—</td>
+  <td>R setup, data import, factor conversion</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week01.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+
+<tr class="sec-hdr"><td colspan="6">🔵 Descriptive Statistics & Visualization</td></tr>
+<tr onclick="showTip('desc_cont')">
+  <td><span class="badge-wk bk-desc">Topic 2</span></td>
+  <td>None (univariate)</td><td>Continuous</td>
+  <td>Mean, SD, Median, IQR</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week02.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('desc_cat')">
+  <td><span class="badge-wk bk-desc">Topic 2</span></td>
+  <td>None (univariate)</td><td>Categorical</td>
+  <td>Frequency, %, RR, OR</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week02.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('viz')">
+  <td><span class="badge-wk bk-desc">Topic 3</span></td>
+  <td>None</td><td>Continuous / Categorical</td>
+  <td>Histogram, Boxplot, Scatterplot (ggplot2)</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week03.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('prob')">
+  <td><span class="badge-wk bk-base">Topic 4</span></td>
+  <td>—</td><td>—</td>
+  <td>Normal distribution, CLT, SE, CI</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week04.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+
+<tr class="sec-hdr"><td colspan="6">🟢 Inferential Statistics</td></tr>
+<tr onclick="showTip('pearson')">
+  <td><span class="badge-wk bk-inf">Topic 5</span></td>
+  <td>Continuous (normal)</td><td>Continuous (normal)</td>
+  <td>Pearson Correlation</td>
+  <td>Spearman</td>
+  <td><a class="tip-link" href="week05.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('spearman')">
+  <td><span class="badge-wk bk-inf">Topic 5</span></td>
+  <td>Continuous (skewed)</td><td>Continuous (skewed)</td>
+  <td>Spearman Correlation</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week05.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('ind_t')">
+  <td><span class="badge-wk bk-inf">Topic 6</span></td>
+  <td>Categorical (2 groups, independent)</td><td>Continuous</td>
+  <td>Independent t-test (Welch)</td>
+  <td>Mann-Whitney U</td>
+  <td><a class="tip-link" href="week06.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('pair_t')">
+  <td><span class="badge-wk bk-inf">Topic 6</span></td>
+  <td>Categorical (2 groups, paired)</td><td>Continuous</td>
+  <td>Paired t-test</td>
+  <td>Wilcoxon Signed-Rank</td>
+  <td><a class="tip-link" href="week06.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('anova')">
+  <td><span class="badge-wk bk-inf">Topic 7</span></td>
+  <td>Categorical (≥ 3 groups)</td><td>Continuous</td>
+  <td>One-way ANOVA + Tukey HSD</td>
+  <td>Kruskal-Wallis</td>
+  <td><a class="tip-link" href="week07.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('mw')">
+  <td><span class="badge-wk bk-inf">Topic 8</span></td>
+  <td>Categorical (2 groups)</td><td>Continuous (skewed)</td>
+  <td>Mann-Whitney U / Wilcoxon</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week08.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('kw')">
+  <td><span class="badge-wk bk-inf">Topic 8</span></td>
+  <td>Categorical (≥ 3 groups)</td><td>Continuous (skewed)</td>
+  <td>Kruskal-Wallis + Dunn's test</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week08.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('lm')">
+  <td><span class="badge-wk bk-inf">Topic 9</span></td>
+  <td>Continuous</td><td>Continuous</td>
+  <td>Simple / Multiple Linear Regression</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week09.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('logit')">
+  <td><span class="badge-wk bk-inf">Topic 10</span></td>
+  <td>Continuous / Categorical</td><td>Binary</td>
+  <td>Binary Logistic Regression</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week10.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+
+<tr class="sec-hdr"><td colspan="6">🟣 Advanced Methods</td></tr>
+<tr onclick="showTip('med')">
+  <td><span class="badge-wk bk-adv">Topic 11</span></td>
+  <td>Continuous</td><td>Continuous</td>
+  <td>Confounding & Mediation Analysis (Bootstrap)</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week11.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('rm_anova')">
+  <td><span class="badge-wk bk-adv">Topic 12</span></td>
+  <td>Repeated time points</td><td>Continuous</td>
+  <td>Repeated Measures ANOVA</td>
+  <td>GEE</td>
+  <td><a class="tip-link" href="week12.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('gee')">
+  <td><span class="badge-wk bk-adv">Topic 12</span></td>
+  <td>Repeated time points</td><td>Continuous</td>
+  <td>GEE</td>
+  <td>Repeated Measures ANOVA</td>
+  <td><a class="tip-link" href="week12.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('manova')">
+  <td><span class="badge-wk bk-adv">Topic 13</span></td>
+  <td>Categorical (≥ 2 groups)</td><td>Continuous (multiple)</td>
+  <td>MANOVA</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week13.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+<tr onclick="showTip('sem')">
+  <td><span class="badge-wk bk-adv">Topic 14</span></td>
+  <td>Latent variable</td><td>Latent variable</td>
+  <td>SEM (CFA + Path Analysis)</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week14.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+
+<tr class="sec-hdr"><td colspan="6">🔴 Exam Preparation</td></tr>
+<tr onclick="showTip('review')">
+  <td><span class="badge-wk bk-exam">Topic 15</span></td>
+  <td colspan="3">Final review, X-Y decision table, practice exam</td>
+  <td>—</td>
+  <td><a class="tip-link" href="week15.html" onclick="event.stopPropagation()">Open →</a></td>
+</tr>
+
+</tbody>
+</table>
+
+<script>
+const tips = {
+  r_setup: {
+    title: "Topic 1　R Setup & Data Import",
+    when: "The starting point for all analyses. Packages must be reloaded each R session with library(), but only installed once with install.packages().",
+    key: ["set.seed()　reproducibility", "read.csv()　import data", "factor()　convert categorical variables", "str() / summary()　inspect data structure"],
+    ems: "After importing ems_main.csv, immediately convert gender, level, district, and shift to factors to prevent errors in downstream analyses.",
+    note: "install.packages() ≠ library(): the former downloads, the latter activates. This is the most common mistake for beginners."
+  },
+  desc_cont: {
+    title: "Descriptive Statistics　Continuous Variables",
+    when: "When Y is continuous, use Mean ± SD (normal distribution) or Median (IQR) (skewed). Always plot a histogram first to assess distribution shape before choosing.",
+    key: ["mean() / sd()", "median() / IQR()", "describe() (psych package)", "Skewness > |1| → use Median"],
+    ems: "EMS response time is typically right-skewed → report Median (IQR). Age and years of service approximate normality → report Mean ± SD.",
+    note: "Normal: M = X.XX (SD = X.XX). Skewed: Mdn = X.XX (IQR: X.XX–X.XX)."
+  },
+  desc_cat: {
+    title: "Descriptive Statistics　Categorical Variables & Epidemiological Measures",
+    when: "When Y is categorical, report frequency and percentage. In epidemiological research, also compute prevalence, RR, and OR.",
+    key: ["table()　frequency", "prop.table()　percentage", "RR = exposed rate / unexposed rate", "OR = ad/bc (2×2 table)"],
+    ems: "Occupational injury prevalence = injured / total. Night shift vs non-night shift RR > 1 indicates increased risk from night shifts.",
+    note: "When prevalence < 10%, OR ≈ RR. At higher prevalence, OR overestimates RR — interpret accordingly."
+  },
+  viz: {
+    title: "Topic 3　Data Visualization (ggplot2)",
+    when: "Always visualize before running any statistical test. Distribution of continuous Y → histogram; group comparisons → boxplot; two continuous variables → scatterplot.",
+    key: ["geom_histogram()　histogram", "geom_boxplot()　boxplot", "geom_point() + geom_smooth()　scatterplot", "facet_wrap()　side-by-side panels"],
+    ems: "A boxplot of response time by EMT level simultaneously shows median, IQR, and outliers — far more informative than a table of numbers alone.",
+    note: "APA style: figure title above (bold), Note below. No 3D effects. Use colorblind-friendly palettes."
+  },
+  prob: {
+    title: "Topic 4　Probability Distributions & Sampling Theory",
+    when: "The theoretical foundation of all inferential statistics. The Central Limit Theorem (CLT) guarantees that with n ≥ 30, sample means approximate normality even when raw data are skewed — justifying t-tests on non-normal data.",
+    key: ["Normal distribution: μ ± 2σ covers 95.4%", "t distribution: heavier tails with smaller df", "SE = SD / √n", "95% CI = x̄ ± t × SE"],
+    ems: "If EMS response time ~ N(9.3, 2.5²), then responses over 14.3 minutes represent only ~2.5% of calls — a useful threshold for performance monitoring.",
+    note: "SD describes individual variability; SE describes uncertainty of the sample mean. As n increases, SE decreases — but SD does not."
+  },
+  pearson: {
+    title: "Pearson Correlation",
+    when: "Use when both continuous variables are approximately normally distributed and the relationship is linear. Always plot a scatterplot first, then run Shapiro-Wilk to confirm normality.",
+    key: ["cor.test(x, y, method='pearson')", "|r| < .30　small effect", "|r| .30–.49　medium effect", "|r| ≥ .50　large effect"],
+    ems: "Pearson correlation between perceived stress (stress_vas) and emotional exhaustion (mbi_ee) quantifies the direction and strength of their linear relationship.",
+    note: "r = 0 does not mean no relationship — only no linear relationship. Correlation ≠ causation. With large n, even r = .06 can be p < .05; always report effect size."
+  },
+  spearman: {
+    title: "Spearman Correlation",
+    when: "Use when either variable is skewed, has outliers, or the data are ordinal (e.g., Likert scales). Converts raw values to ranks before computing correlation — no distributional assumptions required.",
+    key: ["cor.test(x, y, method='spearman')", "Detects any monotonic relationship", "Standard choice for ordinal data", "Shapiro-Wilk p < .05 → switch to Spearman"],
+    ems: "Relationship between job satisfaction (1–5 Likert) and emotional exhaustion: because Likert is ordinal, Spearman is appropriate over Pearson.",
+    note: "Spearman is the nonparametric alternative to Pearson. When data are truly normal, Spearman has slightly lower statistical power (~5–15% less)."
+  },
+  ind_t: {
+    title: "Independent Samples t-test",
+    when: "Use when X is categorical (2 independent groups) and Y is continuous. R defaults to Welch t-test (var.equal = FALSE), which is robust regardless of whether variances are equal — no need to run Levene's test first.",
+    key: ["t.test(y ~ group, var.equal=FALSE)", "Shapiro-Wilk for normality", "Cohen's d effect size", "n ≥ 30: normality assumption relaxed by CLT"],
+    ems: "Comparing mean response time between ALS and BLS units — two non-overlapping groups, independent design.",
+    note: "Statistical significance ≠ clinical importance. A 1.6-minute difference may be decisive in OHCA but trivial for minor injuries. Always pair p-value with Cohen's d."
+  },
+  pair_t: {
+    title: "Paired t-test",
+    when: "Use when the same participants have two measurements (pre-post, self-paired). Analyzes the difference score d = post − pre; individual variation cancels out, giving smaller SE and higher statistical power than independent t.",
+    key: ["t.test(post, pre, paired=TRUE)", "Check normality of difference scores", "df = n − 1 (n = number of pairs)", "Cohen's d (paired version)"],
+    ems: "Comparing MIST scores before and after EMS simulation training — same participants, pre-post design. Must use paired t, not independent t.",
+    note: "Common error: treating paired data as independent samples. This underestimates statistical power and may cause real effects to appear non-significant."
+  },
+  anova: {
+    title: "One-way ANOVA",
+    when: "Use when X is categorical (3+ groups) and Y is continuous. The F-test only tells you 'at least one group differs' — post-hoc comparisons (Tukey HSD) identify which pairs are different.",
+    key: ["aov(y ~ group)", "TukeyHSD()　post-hoc comparisons", "η² = SSb / SSt　effect size", "Levene's test for homogeneity of variance"],
+    ems: "Comparing mean response time across EMT-1, EMT-2, and EMT-P — three groups, use ANOVA rather than multiple t-tests.",
+    note: "If Levene's test p < .05 (unequal variances), use Welch's ANOVA (oneway.test()) with Games-Howell post-hoc comparisons."
+  },
+  mw: {
+    title: "Mann-Whitney U / Wilcoxon Signed-Rank",
+    when: "Nonparametric alternatives to independent t and paired t. Use when n < 30 and Shapiro-Wilk p < .05, or when data are ordinal. Converts raw values to ranks — no normality assumption.",
+    key: ["wilcox.test(y ~ group)　independent", "wilcox.test(post, pre, paired=TRUE)　paired", "Effect size r = Z / √N", "exact=FALSE for larger samples"],
+    ems: "Comparing pain scores (VAS) or sleep quality (PSQI) between groups — these variables are often skewed, making nonparametric methods more appropriate.",
+    note: "Nonparametric tests are not inherently 'better' — they are more honest when assumptions are violated. When data are truly normal, they have ~5–15% less power."
+  },
+  kw: {
+    title: "Kruskal-Wallis Test",
+    when: "Nonparametric alternative to one-way ANOVA for 3+ groups. After a significant result, use Dunn's test for post-hoc comparisons with Bonferroni correction.",
+    key: ["kruskal.test(y ~ group)", "dunn_test() (rstatix package)", "p.adjust.method='bonferroni'", "ε² (Epsilon-squared) effect size"],
+    ems: "Comparing sleep quality (PSQI) across four districts — if normality is violated, Kruskal-Wallis replaces one-way ANOVA.",
+    note: "The H statistic approximates a χ² distribution with df = k − 1 (k = number of groups). Always apply multiple comparison correction in post-hoc tests."
+  },
+  lm: {
+    title: "Linear Regression",
+    when: "Use to predict a continuous Y or to quantify how X affects Y. Multiple regression controls for confounders simultaneously. Standardized β* coefficients allow comparison of predictor importance across different units.",
+    key: ["lm(y ~ x1 + x2)", "summary(model)　examine coefficients", "VIF < 5　multicollinearity check", "plot(model)　residual diagnostics"],
+    ems: "Predicting emotional exhaustion from stress, night shifts, and sleep hours — compare standardized β* to identify the strongest predictor.",
+    note: "R² only increases as more predictors are added. Use Adjusted R² to compare models with different numbers of predictors."
+  },
+  logit: {
+    title: "Binary Logistic Regression",
+    when: "Use when Y is binary (0/1). Linear regression can produce predictions outside [0,1]; logistic regression uses the logit link to constrain predictions to valid probabilities. OR = e^β represents the odds multiplier per unit increase in X.",
+    key: ["glm(y ~ x, family=binomial)", "exp(coef())　compute OR", "OR > 1 increases risk; OR < 1 protective", "ROC / AUC　discriminative ability"],
+    ems: "Predicting whether an EMS worker will experience occupational injury (0/1) — binary Y, use logistic regression and report OR with 95% CI.",
+    note: "OR ≠ RR. OR = 2 means the odds double, not the probability doubles. When prevalence is low (< 10%), OR ≈ RR."
+  },
+  med: {
+    title: "Confounding & Mediation Analysis",
+    when: "Confounding: a third variable influences both X and Y, distorting the X-Y association → control via multiple regression. Mediation: a third variable transmits X's effect on Y → use Baron-Kenny steps + Bootstrap indirect effects.",
+    key: ["Confounding: coefficient change > 10% after adjustment", "Indirect effect = a × b", "Bootstrap CI excluding 0 → significant mediation", "Full vs partial mediation"],
+    ems: "Occupational stress → emotional exhaustion → job satisfaction: emotional exhaustion may mediate why high-stress EMS workers report lower job satisfaction.",
+    note: "Key distinction — Confounder: C → X (C is a cause); Mediator: X → M (M is an effect of X). Temporal ordering is essential for correct identification."
+  },
+  rm_anova: {
+    title: "Repeated Measures ANOVA",
+    when: "Use when the same participants are measured at multiple time points and data are complete (no missing values). Test the sphericity assumption (Mauchly's test); if violated, apply Greenhouse-Geisser correction.",
+    key: ["ezANOVA(dv, wid, within) (ez package)", "Mauchly's test for sphericity", "Greenhouse-Geisser correction", "η² effect size"],
+    ems: "Tracking EMS personnel MIST scores at pre-training, 1-month post, and 3-month post — three time points, same participants.",
+    note: "Repeated measures ANOVA requires complete data (listwise deletion). If missing data are present, use GEE instead."
+  },
+  gee: {
+    title: "GEE (Generalized Estimating Equations)",
+    when: "Use for longitudinal data with missing values, or when Y is not continuous. GEE estimates population-averaged (marginal) effects. Specify a correlation structure appropriate for your data (exchangeable, AR1, etc.).",
+    key: ["geeglm() (geepack package)", "corstr='exchangeable'", "Wald statistic replaces F/t", "QIC() for model comparison"],
+    ems: "If 20% of MIST follow-up scores are missing, GEE uses all available time points rather than excluding participants with any missing data.",
+    note: "GEE estimates population-averaged effects; LME (linear mixed effects) estimates individual-specific effects. GEE is preferred for policy-level inference."
+  },
+  manova: {
+    title: "MANOVA (Multivariate ANOVA)",
+    when: "Use when X is categorical and Y consists of multiple continuous variables. Pillai's Trace is the most robust test statistic. After a significant omnibus test, conduct follow-up univariate ANOVAs with Bonferroni correction (α = .05/p).",
+    key: ["manova(cbind(y1,y2,y3) ~ group)", "Pillai's Trace　most robust", "Box's M　covariance matrix homogeneity", "Follow-up ANOVA with Bonferroni α = .05/p"],
+    ems: "Comparing EMT levels on emotional exhaustion, depersonalization, and job satisfaction simultaneously — multiple continuous Y variables, use MANOVA.",
+    note: "Box's M is highly sensitive to sample size and will almost always be significant in large samples. Pillai's Trace remains robust even when the assumption is violated."
+  },
+  sem: {
+    title: "SEM (Structural Equation Modeling)",
+    when: "Use when research constructs (e.g., stress, burnout) cannot be measured directly and require multiple indicators to reflect latent variables. Integrates CFA (measurement model) and path analysis (structural model), removing measurement error from estimates.",
+    key: ["cfa()　confirmatory factor analysis", "sem() (lavaan package)", "CFI ≥ .95, RMSEA ≤ .06　fit criteria", "Bootstrap CI for indirect effects"],
+    ems: "Occupational stress → emotional exhaustion → work quality: three latent variables linked by causal paths. SEM simultaneously estimates measurement and structural relationships.",
+    note: "SEM requires indicators to share adequate common variance (|r| > .30) for latent factor identification. Low inter-indicator correlations suggest the indicators do not reflect the same construct."
+  },
+  review: {
+    title: "Topic 15　Final Review & Practice Exam",
+    when: "Integrate all course methods and prepare for the final coding exam. Focus on rapidly selecting the correct method from the X-Y decision table and completing a full analysis pipeline within the allotted time.",
+    key: ["X-Y decision table", "Assumption checklist", "Effect size reference table", "APA reporting templates"],
+    ems: "The final exam provides ems_final.csv and asks 5 questions spanning descriptive statistics through advanced methods.",
+    note: "Most common point deductions: omitting effect size, misinterpreting p-value, interpreting OR as probability, misinterpreting confidence intervals, incomplete APA reporting."
+  }
+};
+
+function showTip(key) {
+  const t = tips[key];
+  if (!t) return;
+  document.getElementById('tip-title').textContent = t.title;
+  let html = '';
+  html += '<div class="t-section">When to Use</div><div>' + t.when + '</div>';
+  html += '<div class="t-section">Key Syntax / Concepts</div><div>';
+  t.key.forEach(k => { html += '<span class="t-tag">' + k + '</span> '; });
+  html += '</div>';
+  html += '<div class="t-section">EMS Context Example</div><div>' + t.ems + '</div>';
+  html += '<div class="t-section">Common Pitfalls</div>';
+  html += '<div style="color:#666;font-size:12px;">' + t.note + '</div>';
+  document.getElementById('tip-body').innerHTML = html;
+  document.getElementById('tipbox').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+}
+
+function closeTip() {
+  document.getElementById('tipbox').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeTip();
+});
+</script>
+```

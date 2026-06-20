@@ -1,0 +1,61 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Advanced Applied Statistics"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Topics
+        menu:
+          - href: week01.qmd
+            text: "Topic 1　R Setup"
+          - href: week02.qmd
+            text: "Topic 2　Descriptive Statistics"
+          - href: week03.qmd
+            text: "Topic 3　Visualization"
+          - href: week04.qmd
+            text: "Topic 4　Probability Theory"
+          - href: week05.qmd
+            text: "Topic 5　Correlation"
+          - href: week06.qmd
+            text: "Topic 6　t-test"
+          - href: week07.qmd
+            text: "Topic 7　ANOVA"
+          - href: week08.qmd
+            text: "Topic 8　Nonparametric"
+          - href: week09.qmd
+            text: "Topic 9　Linear Regression"
+          - href: week10.qmd
+            text: "Topic 10　Logistic Regression"
+          - href: week11.qmd
+            text: "Topic 11　Mediation"
+          - href: week12.qmd
+            text: "Topic 12　Repeated Measures & GEE"
+          - href: week13.qmd
+            text: "Topic 13　MANOVA"
+          - href: week14.qmd
+            text: "Topic 14　SEM"
+          - href: week15.qmd
+            text: "Topic 15　Final Review"
+    right:
+      - text: "🌐 中文"
+        href: "https://drjackchang.github.io/advstat/"
+      - icon: envelope
+        href: mailto:yutung@ntunhs.edu.tw
+
+format:
+  html:
+    theme: flatly
+    toc: true
+    toc-title: "On this page"
+    lang: en
+    mainfont: "Inter"
+    page-layout: article
+
+execute:
+  warning: false
+  message: false
+  echo: false
