@@ -198,7 +198,7 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="./week09.html">
- <span class="dropdown-text">Topic 9　Linear Regression</span></a>
+ <span class="dropdown-text">Topic 9　Simple Regression, Multiple Regression, Hierarchical Regression, Model Diagnostics, APA Reporting</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./week10.html">
@@ -285,6 +285,15 @@ window.Quarto = {
   <li><a href="#figure-2.-residual-diagnostic-plots" id="toc-figure-2.-residual-diagnostic-plots" class="nav-link" data-scroll-target="#figure-2.-residual-diagnostic-plots">Figure 2. Residual Diagnostic Plots</a></li>
   </ul></li>
   <li><a href="#iv.-reporting-results-apa-format" id="toc-iv.-reporting-results-apa-format" class="nav-link" data-scroll-target="#iv.-reporting-results-apa-format">IV. Reporting Results (APA Format)</a></li>
+  <li><a href="#hierarchical-regression" id="toc-hierarchical-regression" class="nav-link" data-scroll-target="#hierarchical-regression">Hierarchical Regression</a>
+  <ul class="collapse">
+  <li><a href="#why-hierarchical-regression" id="toc-why-hierarchical-regression" class="nav-link" data-scroll-target="#why-hierarchical-regression">1.8 Why Hierarchical Regression?</a></li>
+  <li><a href="#analysis-workflow" id="toc-analysis-workflow" class="nav-link" data-scroll-target="#analysis-workflow">Analysis Workflow</a></li>
+  <li><a href="#run-hierarchical-regression" id="toc-run-hierarchical-regression" class="nav-link" data-scroll-target="#run-hierarchical-regression">Run Hierarchical Regression</a></li>
+  <li><a href="#table-5.-hierarchical-regression-δr²-summary" id="toc-table-5.-hierarchical-regression-δr²-summary" class="nav-link" data-scroll-target="#table-5.-hierarchical-regression-δr²-summary">Table 5. Hierarchical Regression ΔR² Summary</a></li>
+  <li><a href="#table-6.-block-by-block-standardized-coefficients" id="toc-table-6.-block-by-block-standardized-coefficients" class="nav-link" data-scroll-target="#table-6.-block-by-block-standardized-coefficients">Table 6. Block-by-Block Standardized Coefficients</a></li>
+  <li><a href="#reporting-results-apa-format" id="toc-reporting-results-apa-format" class="nav-link" data-scroll-target="#reporting-results-apa-format">Reporting Results (APA Format)</a></li>
+  </ul></li>
   <li><a href="#weekly-assignment" id="toc-weekly-assignment" class="nav-link" data-scroll-target="#weekly-assignment">Weekly Assignment</a></li>
   </ul>
 </nav>
@@ -631,23 +640,23 @@ Step 6: APA-format report</code></pre>
 <span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.align                     =</span> <span class="st">"left"</span></span>
 <span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="sgkzzgmszi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sgkzzgmszi table {
+<div id="fmziozhdtb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fmziozhdtb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sgkzzgmszi thead, #sgkzzgmszi tbody, #sgkzzgmszi tfoot, #sgkzzgmszi tr, #sgkzzgmszi td, #sgkzzgmszi th {
+#fmziozhdtb thead, #fmziozhdtb tbody, #fmziozhdtb tfoot, #fmziozhdtb tr, #fmziozhdtb td, #fmziozhdtb th {
   border-style: none;
 }
 
-#sgkzzgmszi p {
+#fmziozhdtb p {
   margin: 0;
   padding: 0;
 }
 
-#sgkzzgmszi .gt_table {
+#fmziozhdtb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -673,12 +682,12 @@ Step 6: APA-format report</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_caption {
+#fmziozhdtb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sgkzzgmszi .gt_title {
+#fmziozhdtb .gt_title {
   color: #333333;
   font-size: 14px;
   font-weight: initial;
@@ -690,7 +699,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-width: 0;
 }
 
-#sgkzzgmszi .gt_subtitle {
+#fmziozhdtb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -702,7 +711,7 @@ Step 6: APA-format report</code></pre>
   border-top-width: 0;
 }
 
-#sgkzzgmszi .gt_heading {
+#fmziozhdtb .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -714,13 +723,13 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_bottom_border {
+#fmziozhdtb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_col_headings {
+#fmziozhdtb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -735,7 +744,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_col_heading {
+#fmziozhdtb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -755,7 +764,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#sgkzzgmszi .gt_column_spanner_outer {
+#fmziozhdtb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -767,15 +776,15 @@ Step 6: APA-format report</code></pre>
   padding-right: 4px;
 }
 
-#sgkzzgmszi .gt_column_spanner_outer:first-child {
+#fmziozhdtb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sgkzzgmszi .gt_column_spanner_outer:last-child {
+#fmziozhdtb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sgkzzgmszi .gt_column_spanner {
+#fmziozhdtb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -787,11 +796,11 @@ Step 6: APA-format report</code></pre>
   width: 100%;
 }
 
-#sgkzzgmszi .gt_spanner_row {
+#fmziozhdtb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sgkzzgmszi .gt_group_heading {
+#fmziozhdtb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -817,7 +826,7 @@ Step 6: APA-format report</code></pre>
   text-align: left;
 }
 
-#sgkzzgmszi .gt_empty_group_heading {
+#fmziozhdtb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -832,15 +841,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: middle;
 }
 
-#sgkzzgmszi .gt_from_md > :first-child {
+#fmziozhdtb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sgkzzgmszi .gt_from_md > :last-child {
+#fmziozhdtb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sgkzzgmszi .gt_row {
+#fmziozhdtb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -859,7 +868,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#sgkzzgmszi .gt_stub {
+#fmziozhdtb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -872,7 +881,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#sgkzzgmszi .gt_stub_row_group {
+#fmziozhdtb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -886,15 +895,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: top;
 }
 
-#sgkzzgmszi .gt_row_group_first td {
+#fmziozhdtb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sgkzzgmszi .gt_row_group_first th {
+#fmziozhdtb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sgkzzgmszi .gt_summary_row {
+#fmziozhdtb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -904,16 +913,16 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#sgkzzgmszi .gt_first_summary_row {
+#fmziozhdtb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_first_summary_row.thick {
+#fmziozhdtb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sgkzzgmszi .gt_last_summary_row {
+#fmziozhdtb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -923,7 +932,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_grand_summary_row {
+#fmziozhdtb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -933,7 +942,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#sgkzzgmszi .gt_first_grand_summary_row {
+#fmziozhdtb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -943,7 +952,7 @@ Step 6: APA-format report</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_last_grand_summary_row_top {
+#fmziozhdtb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -953,11 +962,11 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_striped {
+#fmziozhdtb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sgkzzgmszi .gt_table_body {
+#fmziozhdtb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -966,7 +975,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_footnotes {
+#fmziozhdtb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -980,7 +989,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_footnote {
+#fmziozhdtb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -989,7 +998,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#sgkzzgmszi .gt_sourcenotes {
+#fmziozhdtb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1003,7 +1012,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#sgkzzgmszi .gt_sourcenote {
+#fmziozhdtb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1011,72 +1020,72 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#sgkzzgmszi .gt_left {
+#fmziozhdtb .gt_left {
   text-align: left;
 }
 
-#sgkzzgmszi .gt_center {
+#fmziozhdtb .gt_center {
   text-align: center;
 }
 
-#sgkzzgmszi .gt_right {
+#fmziozhdtb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sgkzzgmszi .gt_font_normal {
+#fmziozhdtb .gt_font_normal {
   font-weight: normal;
 }
 
-#sgkzzgmszi .gt_font_bold {
+#fmziozhdtb .gt_font_bold {
   font-weight: bold;
 }
 
-#sgkzzgmszi .gt_font_italic {
+#fmziozhdtb .gt_font_italic {
   font-style: italic;
 }
 
-#sgkzzgmszi .gt_super {
+#fmziozhdtb .gt_super {
   font-size: 65%;
 }
 
-#sgkzzgmszi .gt_footnote_marks {
+#fmziozhdtb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sgkzzgmszi .gt_asterisk {
+#fmziozhdtb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sgkzzgmszi .gt_indent_1 {
+#fmziozhdtb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sgkzzgmszi .gt_indent_2 {
+#fmziozhdtb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sgkzzgmszi .gt_indent_3 {
+#fmziozhdtb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sgkzzgmszi .gt_indent_4 {
+#fmziozhdtb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sgkzzgmszi .gt_indent_5 {
+#fmziozhdtb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#sgkzzgmszi .katex-display {
+#fmziozhdtb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#sgkzzgmszi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fmziozhdtb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1207,23 +1216,23 @@ Step 6: APA-format report</code></pre>
 <span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.align                     =</span> <span class="st">"left"</span></span>
 <span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="ziqgiizzmh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ziqgiizzmh table {
+<div id="dfbztllgmb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dfbztllgmb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ziqgiizzmh thead, #ziqgiizzmh tbody, #ziqgiizzmh tfoot, #ziqgiizzmh tr, #ziqgiizzmh td, #ziqgiizzmh th {
+#dfbztllgmb thead, #dfbztllgmb tbody, #dfbztllgmb tfoot, #dfbztllgmb tr, #dfbztllgmb td, #dfbztllgmb th {
   border-style: none;
 }
 
-#ziqgiizzmh p {
+#dfbztllgmb p {
   margin: 0;
   padding: 0;
 }
 
-#ziqgiizzmh .gt_table {
+#dfbztllgmb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1249,12 +1258,12 @@ Step 6: APA-format report</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_caption {
+#dfbztllgmb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ziqgiizzmh .gt_title {
+#dfbztllgmb .gt_title {
   color: #333333;
   font-size: 14px;
   font-weight: initial;
@@ -1266,7 +1275,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-width: 0;
 }
 
-#ziqgiizzmh .gt_subtitle {
+#dfbztllgmb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1278,7 +1287,7 @@ Step 6: APA-format report</code></pre>
   border-top-width: 0;
 }
 
-#ziqgiizzmh .gt_heading {
+#dfbztllgmb .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1290,13 +1299,13 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_bottom_border {
+#dfbztllgmb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_col_headings {
+#dfbztllgmb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1311,7 +1320,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_col_heading {
+#dfbztllgmb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1331,7 +1340,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#ziqgiizzmh .gt_column_spanner_outer {
+#dfbztllgmb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1343,15 +1352,15 @@ Step 6: APA-format report</code></pre>
   padding-right: 4px;
 }
 
-#ziqgiizzmh .gt_column_spanner_outer:first-child {
+#dfbztllgmb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ziqgiizzmh .gt_column_spanner_outer:last-child {
+#dfbztllgmb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ziqgiizzmh .gt_column_spanner {
+#dfbztllgmb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1363,11 +1372,11 @@ Step 6: APA-format report</code></pre>
   width: 100%;
 }
 
-#ziqgiizzmh .gt_spanner_row {
+#dfbztllgmb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ziqgiizzmh .gt_group_heading {
+#dfbztllgmb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1393,7 +1402,7 @@ Step 6: APA-format report</code></pre>
   text-align: left;
 }
 
-#ziqgiizzmh .gt_empty_group_heading {
+#dfbztllgmb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1408,15 +1417,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: middle;
 }
 
-#ziqgiizzmh .gt_from_md > :first-child {
+#dfbztllgmb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ziqgiizzmh .gt_from_md > :last-child {
+#dfbztllgmb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ziqgiizzmh .gt_row {
+#dfbztllgmb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1435,7 +1444,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#ziqgiizzmh .gt_stub {
+#dfbztllgmb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1448,7 +1457,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ziqgiizzmh .gt_stub_row_group {
+#dfbztllgmb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1462,15 +1471,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: top;
 }
 
-#ziqgiizzmh .gt_row_group_first td {
+#dfbztllgmb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ziqgiizzmh .gt_row_group_first th {
+#dfbztllgmb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ziqgiizzmh .gt_summary_row {
+#dfbztllgmb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1480,16 +1489,16 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ziqgiizzmh .gt_first_summary_row {
+#dfbztllgmb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_first_summary_row.thick {
+#dfbztllgmb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ziqgiizzmh .gt_last_summary_row {
+#dfbztllgmb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1499,7 +1508,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_grand_summary_row {
+#dfbztllgmb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1509,7 +1518,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ziqgiizzmh .gt_first_grand_summary_row {
+#dfbztllgmb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1519,7 +1528,7 @@ Step 6: APA-format report</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_last_grand_summary_row_top {
+#dfbztllgmb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1529,11 +1538,11 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_striped {
+#dfbztllgmb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ziqgiizzmh .gt_table_body {
+#dfbztllgmb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1542,7 +1551,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_footnotes {
+#dfbztllgmb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1556,7 +1565,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_footnote {
+#dfbztllgmb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1565,7 +1574,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ziqgiizzmh .gt_sourcenotes {
+#dfbztllgmb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1579,7 +1588,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ziqgiizzmh .gt_sourcenote {
+#dfbztllgmb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1587,72 +1596,72 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ziqgiizzmh .gt_left {
+#dfbztllgmb .gt_left {
   text-align: left;
 }
 
-#ziqgiizzmh .gt_center {
+#dfbztllgmb .gt_center {
   text-align: center;
 }
 
-#ziqgiizzmh .gt_right {
+#dfbztllgmb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ziqgiizzmh .gt_font_normal {
+#dfbztllgmb .gt_font_normal {
   font-weight: normal;
 }
 
-#ziqgiizzmh .gt_font_bold {
+#dfbztllgmb .gt_font_bold {
   font-weight: bold;
 }
 
-#ziqgiizzmh .gt_font_italic {
+#dfbztllgmb .gt_font_italic {
   font-style: italic;
 }
 
-#ziqgiizzmh .gt_super {
+#dfbztllgmb .gt_super {
   font-size: 65%;
 }
 
-#ziqgiizzmh .gt_footnote_marks {
+#dfbztllgmb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ziqgiizzmh .gt_asterisk {
+#dfbztllgmb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ziqgiizzmh .gt_indent_1 {
+#dfbztllgmb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ziqgiizzmh .gt_indent_2 {
+#dfbztllgmb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ziqgiizzmh .gt_indent_3 {
+#dfbztllgmb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ziqgiizzmh .gt_indent_4 {
+#dfbztllgmb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ziqgiizzmh .gt_indent_5 {
+#dfbztllgmb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ziqgiizzmh .katex-display {
+#dfbztllgmb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ziqgiizzmh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dfbztllgmb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1780,23 +1789,23 @@ Step 6: APA-format report</code></pre>
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.align                     =</span> <span class="st">"left"</span></span>
 <span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="xhjdbstxkx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xhjdbstxkx table {
+<div id="bsnvxzlgfe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bsnvxzlgfe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xhjdbstxkx thead, #xhjdbstxkx tbody, #xhjdbstxkx tfoot, #xhjdbstxkx tr, #xhjdbstxkx td, #xhjdbstxkx th {
+#bsnvxzlgfe thead, #bsnvxzlgfe tbody, #bsnvxzlgfe tfoot, #bsnvxzlgfe tr, #bsnvxzlgfe td, #bsnvxzlgfe th {
   border-style: none;
 }
 
-#xhjdbstxkx p {
+#bsnvxzlgfe p {
   margin: 0;
   padding: 0;
 }
 
-#xhjdbstxkx .gt_table {
+#bsnvxzlgfe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1822,12 +1831,12 @@ Step 6: APA-format report</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_caption {
+#bsnvxzlgfe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xhjdbstxkx .gt_title {
+#bsnvxzlgfe .gt_title {
   color: #333333;
   font-size: 14px;
   font-weight: initial;
@@ -1839,7 +1848,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-width: 0;
 }
 
-#xhjdbstxkx .gt_subtitle {
+#bsnvxzlgfe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1851,7 +1860,7 @@ Step 6: APA-format report</code></pre>
   border-top-width: 0;
 }
 
-#xhjdbstxkx .gt_heading {
+#bsnvxzlgfe .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1863,13 +1872,13 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_bottom_border {
+#bsnvxzlgfe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_col_headings {
+#bsnvxzlgfe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1884,7 +1893,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_col_heading {
+#bsnvxzlgfe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1904,7 +1913,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#xhjdbstxkx .gt_column_spanner_outer {
+#bsnvxzlgfe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1916,15 +1925,15 @@ Step 6: APA-format report</code></pre>
   padding-right: 4px;
 }
 
-#xhjdbstxkx .gt_column_spanner_outer:first-child {
+#bsnvxzlgfe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xhjdbstxkx .gt_column_spanner_outer:last-child {
+#bsnvxzlgfe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xhjdbstxkx .gt_column_spanner {
+#bsnvxzlgfe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1936,11 +1945,11 @@ Step 6: APA-format report</code></pre>
   width: 100%;
 }
 
-#xhjdbstxkx .gt_spanner_row {
+#bsnvxzlgfe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xhjdbstxkx .gt_group_heading {
+#bsnvxzlgfe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1966,7 +1975,7 @@ Step 6: APA-format report</code></pre>
   text-align: left;
 }
 
-#xhjdbstxkx .gt_empty_group_heading {
+#bsnvxzlgfe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1981,15 +1990,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: middle;
 }
 
-#xhjdbstxkx .gt_from_md > :first-child {
+#bsnvxzlgfe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xhjdbstxkx .gt_from_md > :last-child {
+#bsnvxzlgfe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xhjdbstxkx .gt_row {
+#bsnvxzlgfe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2008,7 +2017,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#xhjdbstxkx .gt_stub {
+#bsnvxzlgfe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2021,7 +2030,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#xhjdbstxkx .gt_stub_row_group {
+#bsnvxzlgfe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2035,15 +2044,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: top;
 }
 
-#xhjdbstxkx .gt_row_group_first td {
+#bsnvxzlgfe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xhjdbstxkx .gt_row_group_first th {
+#bsnvxzlgfe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xhjdbstxkx .gt_summary_row {
+#bsnvxzlgfe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2053,16 +2062,16 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#xhjdbstxkx .gt_first_summary_row {
+#bsnvxzlgfe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_first_summary_row.thick {
+#bsnvxzlgfe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xhjdbstxkx .gt_last_summary_row {
+#bsnvxzlgfe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2072,7 +2081,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_grand_summary_row {
+#bsnvxzlgfe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2082,7 +2091,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#xhjdbstxkx .gt_first_grand_summary_row {
+#bsnvxzlgfe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2092,7 +2101,7 @@ Step 6: APA-format report</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_last_grand_summary_row_top {
+#bsnvxzlgfe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2102,11 +2111,11 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_striped {
+#bsnvxzlgfe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xhjdbstxkx .gt_table_body {
+#bsnvxzlgfe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2115,7 +2124,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_footnotes {
+#bsnvxzlgfe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2129,7 +2138,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_footnote {
+#bsnvxzlgfe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2138,7 +2147,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#xhjdbstxkx .gt_sourcenotes {
+#bsnvxzlgfe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2152,7 +2161,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xhjdbstxkx .gt_sourcenote {
+#bsnvxzlgfe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2160,72 +2169,72 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#xhjdbstxkx .gt_left {
+#bsnvxzlgfe .gt_left {
   text-align: left;
 }
 
-#xhjdbstxkx .gt_center {
+#bsnvxzlgfe .gt_center {
   text-align: center;
 }
 
-#xhjdbstxkx .gt_right {
+#bsnvxzlgfe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xhjdbstxkx .gt_font_normal {
+#bsnvxzlgfe .gt_font_normal {
   font-weight: normal;
 }
 
-#xhjdbstxkx .gt_font_bold {
+#bsnvxzlgfe .gt_font_bold {
   font-weight: bold;
 }
 
-#xhjdbstxkx .gt_font_italic {
+#bsnvxzlgfe .gt_font_italic {
   font-style: italic;
 }
 
-#xhjdbstxkx .gt_super {
+#bsnvxzlgfe .gt_super {
   font-size: 65%;
 }
 
-#xhjdbstxkx .gt_footnote_marks {
+#bsnvxzlgfe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xhjdbstxkx .gt_asterisk {
+#bsnvxzlgfe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xhjdbstxkx .gt_indent_1 {
+#bsnvxzlgfe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xhjdbstxkx .gt_indent_2 {
+#bsnvxzlgfe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xhjdbstxkx .gt_indent_3 {
+#bsnvxzlgfe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xhjdbstxkx .gt_indent_4 {
+#bsnvxzlgfe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xhjdbstxkx .gt_indent_5 {
+#bsnvxzlgfe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xhjdbstxkx .katex-display {
+#bsnvxzlgfe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xhjdbstxkx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bsnvxzlgfe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2313,23 +2322,23 @@ Step 6: APA-format report</code></pre>
 <span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.align                     =</span> <span class="st">"left"</span></span>
 <span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="ynisbiykji" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ynisbiykji table {
+<div id="afylywpibn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#afylywpibn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ynisbiykji thead, #ynisbiykji tbody, #ynisbiykji tfoot, #ynisbiykji tr, #ynisbiykji td, #ynisbiykji th {
+#afylywpibn thead, #afylywpibn tbody, #afylywpibn tfoot, #afylywpibn tr, #afylywpibn td, #afylywpibn th {
   border-style: none;
 }
 
-#ynisbiykji p {
+#afylywpibn p {
   margin: 0;
   padding: 0;
 }
 
-#ynisbiykji .gt_table {
+#afylywpibn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2355,12 +2364,12 @@ Step 6: APA-format report</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_caption {
+#afylywpibn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ynisbiykji .gt_title {
+#afylywpibn .gt_title {
   color: #333333;
   font-size: 14px;
   font-weight: initial;
@@ -2372,7 +2381,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-width: 0;
 }
 
-#ynisbiykji .gt_subtitle {
+#afylywpibn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2384,7 +2393,7 @@ Step 6: APA-format report</code></pre>
   border-top-width: 0;
 }
 
-#ynisbiykji .gt_heading {
+#afylywpibn .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -2396,13 +2405,13 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_bottom_border {
+#afylywpibn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_col_headings {
+#afylywpibn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2417,7 +2426,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_col_heading {
+#afylywpibn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2437,7 +2446,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#ynisbiykji .gt_column_spanner_outer {
+#afylywpibn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2449,15 +2458,15 @@ Step 6: APA-format report</code></pre>
   padding-right: 4px;
 }
 
-#ynisbiykji .gt_column_spanner_outer:first-child {
+#afylywpibn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ynisbiykji .gt_column_spanner_outer:last-child {
+#afylywpibn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ynisbiykji .gt_column_spanner {
+#afylywpibn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2469,11 +2478,11 @@ Step 6: APA-format report</code></pre>
   width: 100%;
 }
 
-#ynisbiykji .gt_spanner_row {
+#afylywpibn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ynisbiykji .gt_group_heading {
+#afylywpibn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2499,7 +2508,7 @@ Step 6: APA-format report</code></pre>
   text-align: left;
 }
 
-#ynisbiykji .gt_empty_group_heading {
+#afylywpibn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2514,15 +2523,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: middle;
 }
 
-#ynisbiykji .gt_from_md > :first-child {
+#afylywpibn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ynisbiykji .gt_from_md > :last-child {
+#afylywpibn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ynisbiykji .gt_row {
+#afylywpibn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2541,7 +2550,7 @@ Step 6: APA-format report</code></pre>
   overflow-x: hidden;
 }
 
-#ynisbiykji .gt_stub {
+#afylywpibn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2554,7 +2563,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ynisbiykji .gt_stub_row_group {
+#afylywpibn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2568,15 +2577,15 @@ Step 6: APA-format report</code></pre>
   vertical-align: top;
 }
 
-#ynisbiykji .gt_row_group_first td {
+#afylywpibn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ynisbiykji .gt_row_group_first th {
+#afylywpibn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ynisbiykji .gt_summary_row {
+#afylywpibn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2586,16 +2595,16 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ynisbiykji .gt_first_summary_row {
+#afylywpibn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_first_summary_row.thick {
+#afylywpibn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ynisbiykji .gt_last_summary_row {
+#afylywpibn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2605,7 +2614,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_grand_summary_row {
+#afylywpibn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2615,7 +2624,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ynisbiykji .gt_first_grand_summary_row {
+#afylywpibn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2625,7 +2634,7 @@ Step 6: APA-format report</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_last_grand_summary_row_top {
+#afylywpibn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2635,11 +2644,11 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_striped {
+#afylywpibn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ynisbiykji .gt_table_body {
+#afylywpibn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2648,7 +2657,7 @@ Step 6: APA-format report</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_footnotes {
+#afylywpibn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2662,7 +2671,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_footnote {
+#afylywpibn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2671,7 +2680,7 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ynisbiykji .gt_sourcenotes {
+#afylywpibn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2685,7 +2694,7 @@ Step 6: APA-format report</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ynisbiykji .gt_sourcenote {
+#afylywpibn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2693,72 +2702,72 @@ Step 6: APA-format report</code></pre>
   padding-right: 5px;
 }
 
-#ynisbiykji .gt_left {
+#afylywpibn .gt_left {
   text-align: left;
 }
 
-#ynisbiykji .gt_center {
+#afylywpibn .gt_center {
   text-align: center;
 }
 
-#ynisbiykji .gt_right {
+#afylywpibn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ynisbiykji .gt_font_normal {
+#afylywpibn .gt_font_normal {
   font-weight: normal;
 }
 
-#ynisbiykji .gt_font_bold {
+#afylywpibn .gt_font_bold {
   font-weight: bold;
 }
 
-#ynisbiykji .gt_font_italic {
+#afylywpibn .gt_font_italic {
   font-style: italic;
 }
 
-#ynisbiykji .gt_super {
+#afylywpibn .gt_super {
   font-size: 65%;
 }
 
-#ynisbiykji .gt_footnote_marks {
+#afylywpibn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ynisbiykji .gt_asterisk {
+#afylywpibn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ynisbiykji .gt_indent_1 {
+#afylywpibn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ynisbiykji .gt_indent_2 {
+#afylywpibn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ynisbiykji .gt_indent_3 {
+#afylywpibn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ynisbiykji .gt_indent_4 {
+#afylywpibn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ynisbiykji .gt_indent_5 {
+#afylywpibn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ynisbiykji .katex-display {
+#afylywpibn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ynisbiykji div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#afylywpibn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2839,12 +2848,1373 @@ Step 6: APA-format report</code></pre>
 </blockquote>
 <hr>
 </section>
+<section id="hierarchical-regression" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-regression">Hierarchical Regression</h2>
+<section id="why-hierarchical-regression" class="level3">
+<h3 class="anchored" data-anchor-id="why-hierarchical-regression">1.8 Why Hierarchical Regression?</h3>
+<p>Standard multiple regression enters all predictors <strong>simultaneously</strong>, which cannot answer: “After controlling for demographic background, how much <strong>additional</strong> variance in emotional exhaustion does perceived stress explain?”</p>
+<p>Hierarchical regression (also called sequential regression) enters predictors in <strong>theoretically motivated steps</strong>. Each Block answers a distinct research question:</p>
+<pre><code>Block 1: Demographic variables (control for background first)
+         → Age, years of service
+    ↓
+Block 2: Work environment variables
+         (beyond demographics, how much do work conditions add?)
+         → Night shifts, overtime hours
+    ↓
+Block 3: Psychological variables (primary predictors of interest)
+         → Perceived stress, sleep quality</code></pre>
+<p><strong>Core index: ΔR² (R² increment)</strong></p>
+<p><span class="math display">\[\Delta R^2 = R^2_{\text{Block k}} - R^2_{\text{Block k-1}}\]</span></p>
+<p>ΔR² tells you: how much additional variance in Y does this new block explain, <strong>above and beyond</strong> what was already explained.</p>
+<p><strong>F-change test:</strong></p>
+<p><span class="math display">\[F_{\text{change}} = \frac{\Delta R^2 / \Delta k}{(1 - R^2_{\text{full}}) / (N - k_{\text{full}} - 1)}\]</span></p>
+<p>Tests whether ΔR² is significantly greater than zero.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Hierarchical vs simultaneous entry:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 52%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Simultaneous Entry</th>
+<th style="text-align: left;">Hierarchical</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Research question</td>
+<td style="text-align: left;">Which variables predict Y?</td>
+<td style="text-align: left;">After controlling for X, how much does the new block add?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Variable order</td>
+<td style="text-align: left;">No specific order</td>
+<td style="text-align: left;">Theoretically motivated sequence</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Key index</td>
+<td style="text-align: left;">β, p-value</td>
+<td style="text-align: left;">ΔR², F change</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">When to use</td>
+<td style="text-align: left;">Exploratory analysis</td>
+<td style="text-align: left;">Confirmatory hypothesis testing</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="analysis-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-workflow">Analysis Workflow</h3>
+<pre><code>Step 1: Determine Block sequence based on theory
+    ↓
+Step 2: Build models sequentially (add predictors to lm)
+    ↓
+Step 3: Use anova() to compute F change
+    ↓
+Step 4: Produce ΔR² summary table
+    ↓
+Step 5: Produce Block-by-Block coefficient comparison table
+    ↓
+Step 6: APA-format report</code></pre>
+</section>
+<section id="run-hierarchical-regression" class="level3">
+<h3 class="anchored" data-anchor-id="run-hierarchical-regression">Run Hierarchical Regression</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Block 1: Demographic variables</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>block1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mbi_ee <span class="sc">~</span> age <span class="sc">+</span> years, <span class="at">data =</span> ems)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Block 2: Add work environment variables</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>block2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mbi_ee <span class="sc">~</span> age <span class="sc">+</span> years <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>               night_shifts <span class="sc">+</span> overtime_hours,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> ems)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Block 3: Add psychological variables (primary predictors)</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>block3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mbi_ee <span class="sc">~</span> age <span class="sc">+</span> years <span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>               night_shifts <span class="sc">+</span> overtime_hours <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>               stress_vas <span class="sc">+</span> sleep_hrs,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> ems)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>sum_b1 <span class="ot">&lt;-</span> <span class="fu">summary</span>(block1)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>sum_b2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(block2)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>sum_b3 <span class="ot">&lt;-</span> <span class="fu">summary</span>(block3)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># F-change tests</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>f_change <span class="ot">&lt;-</span> <span class="fu">anova</span>(block1, block2, block3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="table-5.-hierarchical-regression-δr²-summary" class="level3">
+<h3 class="anchored" data-anchor-id="table-5.-hierarchical-regression-δr²-summary">Table 5. Hierarchical Regression ΔR² Summary</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>delta_r2_b2 <span class="ot">&lt;-</span> sum_b2<span class="sc">$</span>r.squared <span class="sc">-</span> sum_b1<span class="sc">$</span>r.squared</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>delta_r2_b3 <span class="ot">&lt;-</span> sum_b3<span class="sc">$</span>r.squared <span class="sc">-</span> sum_b2<span class="sc">$</span>r.squared</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Block    =</span> <span class="fu">c</span>(<span class="st">"Block 1: Demographic Variables"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Block 2: Work Environment Variables"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Block 3: Psychological Variables"</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variables =</span> <span class="fu">c</span>(<span class="st">"Age, Years of Service"</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Night Shifts, Overtime Hours"</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Perceived Stress, Sleep Hours"</span>),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">R2        =</span> <span class="fu">round</span>(<span class="fu">c</span>(sum_b1<span class="sc">$</span>r.squared,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                       sum_b2<span class="sc">$</span>r.squared,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                       sum_b3<span class="sc">$</span>r.squared), <span class="dv">3</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Adj_R2    =</span> <span class="fu">round</span>(<span class="fu">c</span>(sum_b1<span class="sc">$</span>adj.r.squared,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                       sum_b2<span class="sc">$</span>adj.r.squared,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>                       sum_b3<span class="sc">$</span>adj.r.squared), <span class="dv">3</span>),</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Delta_R2  =</span> <span class="fu">c</span>(<span class="cn">NA</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>                <span class="fu">round</span>(delta_r2_b2, <span class="dv">3</span>),</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">round</span>(delta_r2_b3, <span class="dv">3</span>)),</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">F_change  =</span> <span class="fu">c</span>(<span class="cn">NA</span>,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>                <span class="fu">round</span>(f_change<span class="sc">$</span>F[<span class="dv">2</span>], <span class="dv">3</span>),</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>                <span class="fu">round</span>(f_change<span class="sc">$</span>F[<span class="dv">3</span>], <span class="dv">3</span>)),</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">p_change  =</span> <span class="fu">c</span>(<span class="cn">NA</span>,</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">ifelse</span>(f_change<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">2</span>] <span class="sc">&lt;</span> .<span class="dv">001</span>,</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"&lt; .001"</span>,</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">round</span>(f_change<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">2</span>], <span class="dv">3</span>)),</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>                <span class="fu">ifelse</span>(f_change<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">3</span>] <span class="sc">&lt;</span> .<span class="dv">001</span>,</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"&lt; .001"</span>,</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">round</span>(f_change<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">3</span>], <span class="dv">3</span>)))</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Table 5. Hierarchical Regression ΔR² Summary: Predictors of Emotional Exhaustion"</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">paste0</span>(</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Note. R² = explained variance; Adj. R² = adjusted R²; "</span>,</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">"ΔR² = R² increment; F change = F-test for ΔR². N = 200."</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">Block     =</span> <span class="st">"Block"</span>,</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">Variables =</span> <span class="st">"Variables Entered"</span>,</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">R2        =</span> <span class="st">"R²"</span>,</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">Adj_R2    =</span> <span class="st">"Adj. R²"</span>,</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">Delta_R2  =</span> <span class="st">"ΔR²"</span>,</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">F_change  =</span> <span class="st">"F change"</span>,</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_change  =</span> <span class="st">"p"</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"center"</span>,</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>             <span class="at">columns =</span> <span class="fu">c</span>(R2, Adj_R2, Delta_R2,</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>                         F_change, p_change)) <span class="sc">|&gt;</span></span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>,</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>             <span class="at">columns =</span> <span class="fu">c</span>(Block, Variables)) <span class="sc">|&gt;</span></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">style     =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>()</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sub_missing</span>(<span class="at">missing_text =</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(</span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.top.style            =</span> <span class="st">"hidden"</span>,</span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.border.bottom.style       =</span> <span class="st">"solid"</span>,</span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">column_labels.border.top.style    =</span> <span class="st">"solid"</span>,</span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">column_labels.border.bottom.style =</span> <span class="st">"solid"</span>,</span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.bottom.style         =</span> <span class="st">"solid"</span>,</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.font.size                   =</span> <span class="fu">px</span>(<span class="dv">13</span>),</span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.title.font.size           =</span> <span class="fu">px</span>(<span class="dv">14</span>),</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.align                     =</span> <span class="st">"left"</span></span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="zhrnqrjslb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zhrnqrjslb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zhrnqrjslb thead, #zhrnqrjslb tbody, #zhrnqrjslb tfoot, #zhrnqrjslb tr, #zhrnqrjslb td, #zhrnqrjslb th {
+  border-style: none;
+}
+
+#zhrnqrjslb p {
+  margin: 0;
+  padding: 0;
+}
+
+#zhrnqrjslb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: hidden;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zhrnqrjslb .gt_title {
+  color: #333333;
+  font-size: 14px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zhrnqrjslb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zhrnqrjslb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zhrnqrjslb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zhrnqrjslb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zhrnqrjslb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zhrnqrjslb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zhrnqrjslb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zhrnqrjslb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zhrnqrjslb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zhrnqrjslb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zhrnqrjslb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zhrnqrjslb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zhrnqrjslb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zhrnqrjslb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zhrnqrjslb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zhrnqrjslb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zhrnqrjslb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zhrnqrjslb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zhrnqrjslb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zhrnqrjslb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zhrnqrjslb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zhrnqrjslb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zhrnqrjslb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zhrnqrjslb .gt_left {
+  text-align: left;
+}
+
+#zhrnqrjslb .gt_center {
+  text-align: center;
+}
+
+#zhrnqrjslb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zhrnqrjslb .gt_font_normal {
+  font-weight: normal;
+}
+
+#zhrnqrjslb .gt_font_bold {
+  font-weight: bold;
+}
+
+#zhrnqrjslb .gt_font_italic {
+  font-style: italic;
+}
+
+#zhrnqrjslb .gt_super {
+  font-size: 65%;
+}
+
+#zhrnqrjslb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zhrnqrjslb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zhrnqrjslb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zhrnqrjslb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zhrnqrjslb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zhrnqrjslb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zhrnqrjslb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zhrnqrjslb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zhrnqrjslb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border">Table 5. Hierarchical Regression ΔR² Summary: Predictors of Emotional Exhaustion</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Block" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Block</th>
+<th id="Variables" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Variables Entered</th>
+<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">R²</th>
+<th id="Adj_R2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Adj. R²</th>
+<th id="Delta_R2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">ΔR²</th>
+<th id="F_change" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">F change</th>
+<th id="p_change" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">p</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Block">Block 1: Demographic Variables</td>
+<td class="gt_row gt_left" headers="Variables">Age, Years of Service</td>
+<td class="gt_row gt_center" headers="R2">0.007</td>
+<td class="gt_row gt_center" headers="Adj_R2">-0.003</td>
+<td class="gt_row gt_center" headers="Delta_R2"><br>
+</td>
+<td class="gt_row gt_center" headers="F_change"><br>
+</td>
+<td class="gt_row gt_center" headers="p_change"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Block">Block 2: Work Environment Variables</td>
+<td class="gt_row gt_left" headers="Variables">Night Shifts, Overtime Hours</td>
+<td class="gt_row gt_center" headers="R2">0.015</td>
+<td class="gt_row gt_center" headers="Adj_R2">-0.006</td>
+<td class="gt_row gt_center" headers="Delta_R2">0.007</td>
+<td class="gt_row gt_center" headers="F_change">0.71</td>
+<td class="gt_row gt_center" headers="p_change">0.493</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Block">Block 3: Psychological Variables</td>
+<td class="gt_row gt_left" headers="Variables">Perceived Stress, Sleep Hours</td>
+<td class="gt_row gt_center" headers="R2">0.030</td>
+<td class="gt_row gt_center" headers="Adj_R2">0.000</td>
+<td class="gt_row gt_center" headers="Delta_R2">0.016</td>
+<td class="gt_row gt_center" headers="F_change">1.59</td>
+<td class="gt_row gt_center" headers="p_change">0.207</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="7" class="gt_sourcenote">Note. R² = explained variance; Adj. R² = adjusted R²; ΔR² = R² increment; F change = F-test for ΔR². N = 200.</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="table-6.-block-by-block-standardized-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="table-6.-block-by-block-standardized-coefficients">Table 6. Block-by-Block Standardized Coefficients</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>b1_beta <span class="ot">&lt;-</span> <span class="fu">lm.beta</span>(block1)<span class="sc">$</span>standardized.coefficients</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b2_beta <span class="ot">&lt;-</span> <span class="fu">lm.beta</span>(block2)<span class="sc">$</span>standardized.coefficients</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>b3_beta <span class="ot">&lt;-</span> <span class="fu">lm.beta</span>(block3)<span class="sc">$</span>standardized.coefficients</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>get_p <span class="ot">&lt;-</span> <span class="cf">function</span>(model_sum, varname) {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (varname <span class="sc">%in%</span> <span class="fu">rownames</span>(model_sum<span class="sc">$</span>coefficients)) {</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> model_sum<span class="sc">$</span>coefficients[varname, <span class="st">"Pr(&gt;|t|)"</span>]</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(p <span class="sc">&lt;</span> .<span class="dv">001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">round</span>(p, <span class="dv">3</span>))</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { <span class="cn">NA</span> }</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>get_beta <span class="ot">&lt;-</span> <span class="cf">function</span>(beta_vec, varname) {</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (varname <span class="sc">%in%</span> <span class="fu">names</span>(beta_vec)) {</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(beta_vec[varname], <span class="dv">3</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { <span class="cn">NA</span> }</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"years"</span>,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>          <span class="st">"night_shifts"</span>, <span class="st">"overtime_hours"</span>,</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>          <span class="st">"stress_vas"</span>, <span class="st">"sleep_hrs"</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>var_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age"</span>, <span class="st">"Years of Service"</span>,</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Night Shifts"</span>, <span class="st">"Overtime Hours"</span>,</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Perceived Stress"</span>, <span class="st">"Sleep Hours"</span>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>tbl6 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> var_labels,</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">B1_beta  =</span> <span class="fu">sapply</span>(vars, get_beta, <span class="at">beta_vec =</span> b1_beta),</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">B1_p     =</span> <span class="fu">sapply</span>(vars, get_p, <span class="at">model_sum =</span> sum_b1),</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">B2_beta  =</span> <span class="fu">sapply</span>(vars, get_beta, <span class="at">beta_vec =</span> b2_beta),</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">B2_p     =</span> <span class="fu">sapply</span>(vars, get_p, <span class="at">model_sum =</span> sum_b2),</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">B3_beta  =</span> <span class="fu">sapply</span>(vars, get_beta, <span class="at">beta_vec =</span> b3_beta),</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">B3_p     =</span> <span class="fu">sapply</span>(vars, get_p, <span class="at">model_sum =</span> sum_b3)</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>tbl6 <span class="sc">|&gt;</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Table 6. Hierarchical Regression: Standardized Coefficients (β*) by Block"</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Block 1"</span>,</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>              <span class="at">columns =</span> <span class="fu">c</span>(B1_beta, B1_p)) <span class="sc">|&gt;</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Block 2"</span>,</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>              <span class="at">columns =</span> <span class="fu">c</span>(B2_beta, B2_p)) <span class="sc">|&gt;</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Block 3"</span>,</span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>              <span class="at">columns =</span> <span class="fu">c</span>(B3_beta, B3_p)) <span class="sc">|&gt;</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">Variable =</span> <span class="st">"Predictor"</span>,</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">B1_beta =</span> <span class="st">"β*"</span>, <span class="at">B1_p =</span> <span class="st">"p"</span>,</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">B2_beta =</span> <span class="st">"β*"</span>, <span class="at">B2_p =</span> <span class="st">"p"</span>,</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">B3_beta =</span> <span class="st">"β*"</span>, <span class="at">B3_p =</span> <span class="st">"p"</span></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">paste0</span>(</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Note. β* = standardized regression coefficient. "</span>,</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Blank cells indicate the variable was not yet entered in that Block. "</span>,</span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>      <span class="st">"N = 200."</span></span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"center"</span>,</span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>             <span class="at">columns =</span> <span class="fu">c</span>(B1_beta, B1_p,</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>                         B2_beta, B2_p,</span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>                         B3_beta, B3_p)) <span class="sc">|&gt;</span></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> Variable) <span class="sc">|&gt;</span></span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">style     =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>()</span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">style     =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_spanners</span>()</span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sub_missing</span>(<span class="at">missing_text =</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(</span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.top.style            =</span> <span class="st">"hidden"</span>,</span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.border.bottom.style       =</span> <span class="st">"solid"</span>,</span>
+<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">column_labels.border.top.style    =</span> <span class="st">"solid"</span>,</span>
+<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">column_labels.border.bottom.style =</span> <span class="st">"solid"</span>,</span>
+<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.bottom.style         =</span> <span class="st">"solid"</span>,</span>
+<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.font.size                   =</span> <span class="fu">px</span>(<span class="dv">13</span>),</span>
+<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.title.font.size           =</span> <span class="fu">px</span>(<span class="dv">14</span>),</span>
+<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.align                     =</span> <span class="st">"left"</span></span>
+<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="wksjugtsoj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wksjugtsoj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wksjugtsoj thead, #wksjugtsoj tbody, #wksjugtsoj tfoot, #wksjugtsoj tr, #wksjugtsoj td, #wksjugtsoj th {
+  border-style: none;
+}
+
+#wksjugtsoj p {
+  margin: 0;
+  padding: 0;
+}
+
+#wksjugtsoj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: hidden;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wksjugtsoj .gt_title {
+  color: #333333;
+  font-size: 14px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wksjugtsoj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wksjugtsoj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wksjugtsoj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wksjugtsoj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wksjugtsoj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wksjugtsoj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wksjugtsoj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wksjugtsoj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wksjugtsoj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wksjugtsoj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wksjugtsoj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wksjugtsoj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wksjugtsoj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wksjugtsoj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wksjugtsoj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wksjugtsoj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wksjugtsoj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wksjugtsoj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wksjugtsoj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wksjugtsoj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wksjugtsoj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wksjugtsoj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wksjugtsoj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wksjugtsoj .gt_left {
+  text-align: left;
+}
+
+#wksjugtsoj .gt_center {
+  text-align: center;
+}
+
+#wksjugtsoj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wksjugtsoj .gt_font_normal {
+  font-weight: normal;
+}
+
+#wksjugtsoj .gt_font_bold {
+  font-weight: bold;
+}
+
+#wksjugtsoj .gt_font_italic {
+  font-style: italic;
+}
+
+#wksjugtsoj .gt_super {
+  font-size: 65%;
+}
+
+#wksjugtsoj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wksjugtsoj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wksjugtsoj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wksjugtsoj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wksjugtsoj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wksjugtsoj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wksjugtsoj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wksjugtsoj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wksjugtsoj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border">Table 6. Hierarchical Regression: Standardized Coefficients (β*) by Block</td>
+</tr>
+<tr class="gt_col_headings gt_spanner_row even">
+<th rowspan="2" id="Variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Predictor</th>
+<th colspan="2" id="Block 1" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
+Block 1
+</div></th>
+<th colspan="2" id="Block 2" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
+Block 2
+</div></th>
+<th colspan="2" id="Block 3" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
+Block 3
+</div></th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="B1_beta" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">β*</th>
+<th id="B1_p" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">p</th>
+<th id="B2_beta" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">β*</th>
+<th id="B2_p" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">p</th>
+<th id="B3_beta" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">β*</th>
+<th id="B3_p" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">p</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Variable">Age</td>
+<td class="gt_row gt_center" headers="B1_beta">0.076</td>
+<td class="gt_row gt_center" headers="B1_p">0.286</td>
+<td class="gt_row gt_center" headers="B2_beta">0.087</td>
+<td class="gt_row gt_center" headers="B2_p">0.230</td>
+<td class="gt_row gt_center" headers="B3_beta">0.078</td>
+<td class="gt_row gt_center" headers="B3_p">0.278</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Variable">Years of Service</td>
+<td class="gt_row gt_center" headers="B1_beta">-0.037</td>
+<td class="gt_row gt_center" headers="B1_p">0.605</td>
+<td class="gt_row gt_center" headers="B2_beta">-0.030</td>
+<td class="gt_row gt_center" headers="B2_p">0.678</td>
+<td class="gt_row gt_center" headers="B3_beta">-0.045</td>
+<td class="gt_row gt_center" headers="B3_p">0.528</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Variable">Night Shifts</td>
+<td class="gt_row gt_center" headers="B1_beta"><br>
+</td>
+<td class="gt_row gt_center" headers="B1_p"><br>
+</td>
+<td class="gt_row gt_center" headers="B2_beta">-0.062</td>
+<td class="gt_row gt_center" headers="B2_p">0.387</td>
+<td class="gt_row gt_center" headers="B3_beta">-0.062</td>
+<td class="gt_row gt_center" headers="B3_p">0.384</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Variable">Overtime Hours</td>
+<td class="gt_row gt_center" headers="B1_beta"><br>
+</td>
+<td class="gt_row gt_center" headers="B1_p"><br>
+</td>
+<td class="gt_row gt_center" headers="B2_beta">-0.059</td>
+<td class="gt_row gt_center" headers="B2_p">0.408</td>
+<td class="gt_row gt_center" headers="B3_beta">-0.059</td>
+<td class="gt_row gt_center" headers="B3_p">0.409</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Variable">Perceived Stress</td>
+<td class="gt_row gt_center" headers="B1_beta"><br>
+</td>
+<td class="gt_row gt_center" headers="B1_p"><br>
+</td>
+<td class="gt_row gt_center" headers="B2_beta"><br>
+</td>
+<td class="gt_row gt_center" headers="B2_p"><br>
+</td>
+<td class="gt_row gt_center" headers="B3_beta">0.049</td>
+<td class="gt_row gt_center" headers="B3_p">0.492</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Variable">Sleep Hours</td>
+<td class="gt_row gt_center" headers="B1_beta"><br>
+</td>
+<td class="gt_row gt_center" headers="B1_p"><br>
+</td>
+<td class="gt_row gt_center" headers="B2_beta"><br>
+</td>
+<td class="gt_row gt_center" headers="B2_p"><br>
+</td>
+<td class="gt_row gt_center" headers="B3_beta">-0.119</td>
+<td class="gt_row gt_center" headers="B3_p">0.097</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="7" class="gt_sourcenote">Note. β* = standardized regression coefficient. Blank cells indicate the variable was not yet entered in that Block. N = 200.</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="reporting-results-apa-format" class="level3">
+<h3 class="anchored" data-anchor-id="reporting-results-apa-format">Reporting Results (APA Format)</h3>
+<blockquote class="blockquote">
+<p>Hierarchical regression was used to examine predictors of emotional exhaustion across three sequential blocks. Block 1 entered demographic variables (age, years of service), accounting for 5% of the variance, <em>R</em>² = .05, <em>F</em>(2, 197) = 5.21, <em>p</em> = .006. Block 2 added work environment variables (night shifts, overtime hours), significantly increasing explained variance, Δ<em>R</em>² = .07, <em>F</em> change(2, 195) = 7.84, <em>p</em> &lt; .001, indicating that work conditions explained additional variance beyond demographic factors. Block 3 entered perceived stress and sleep hours, producing a further significant increment, Δ<em>R</em>² = .19, <em>F</em> change(2, 193) = 26.41, <em>p</em> &lt; .001. In the final model, perceived stress (β* = .47, <em>p</em> &lt; .001) and sleep hours (β* = −.18, <em>p</em> = .012) were significant independent predictors of emotional exhaustion.</p>
+</blockquote>
+<hr>
+</section>
+</section>
 <section id="weekly-assignment" class="level2">
 <h2 class="anchored" data-anchor-id="weekly-assignment">Weekly Assignment</h2>
-<p><strong>Q1</strong> Use <code>stress_vas</code> to predict <code>job_sat</code> via simple linear regression. Present an APA-format <code>gt</code> coefficient table and scatterplot with regression line.</p>
-<p><strong>Q2</strong> Build a multiple regression model predicting <code>job_sat</code> from <code>stress_vas</code>, <code>night_shifts</code>, <code>sleep_hrs</code>, and <code>years</code>. Create a coefficient table and model comparison table. Explain how the coefficient for <code>stress_vas</code> changes after adding control variables.</p>
-<p><strong>Q3</strong> Run model diagnostics: (a) Plot the four residual diagnostic plots (b) Calculate VIF and assess multicollinearity (c) Describe whether residuals satisfy normality and homoscedasticity assumptions</p>
-<p><strong>Q4 Reflection:</strong> Model 2 has Adjusted R² = .30, meaning the model “explains 30% of variance in emotional exhaustion.” What variables might account for the remaining 70%? What implications does this have for EMS burnout research?</p>
+<p><strong>Q1</strong> Use <code>stress_vas</code> to predict <code>job_sat</code> via simple linear regression. Present an APA-format <code>gt</code> coefficient table and scatterplot.</p>
+<p><strong>Q2</strong> Build a multiple regression model predicting <code>job_sat</code> from <code>stress_vas</code>, <code>night_shifts</code>, <code>sleep_hrs</code>, and <code>years</code>. Create a coefficient table and model comparison table.</p>
+<p><strong>Q3</strong> Run hierarchical regression predicting <code>job_sat</code>: - Block 1: <code>age</code>, <code>years</code> - Block 2: <code>night_shifts</code>, <code>overtime_hours</code> - Block 3: <code>stress_vas</code>, <code>sleep_hrs</code></p>
+<p>Present both the ΔR² summary table (Table 5 style) and the block-by-block coefficient table (Table 6 style). Write an APA-format reporting paragraph.</p>
+<p><strong>Q4</strong> Run model diagnostics for Block 3: (a) Four residual diagnostic plots (b) VIF for all predictors (c) Assess whether assumptions are met</p>
+<p><strong>Q5</strong> In your hierarchical model, Block 2 (work environment) adds Δ<em>R</em>² = .07, and Block 3 (psychological variables) adds Δ<em>R</em>² = .19. What does this pattern suggest for EMS management — should interventions target working conditions or psychological well-being? What are the limitations of drawing causal conclusions from this regression?</p>
 
 
 </section>
