@@ -458,17 +458,277 @@ par(mfrow = c(1, 1))
 
 > Multiple linear regression was conducted with perceived stress, years of service, night shifts, and sleep hours as simultaneous predictors of emotional exhaustion. The overall model was significant, *F*(4, 195) = 22.34, *p* < .001, *R*² = .31, Adj. *R*² = .30. Perceived stress (β* = .47, *p* < .001) and sleep hours (β* = −.18, *p* = .012) were significant predictors; after controlling for other variables, higher stress and fewer sleep hours were independently associated with greater emotional exhaustion.
 
+
+---
+
+## Hierarchical Regression
+
+### 1.8 Why Hierarchical Regression?
+
+Standard multiple regression enters all predictors **simultaneously**, which cannot answer: "After controlling for demographic background, how much **additional** variance in emotional exhaustion does perceived stress explain?"
+
+Hierarchical regression (also called sequential regression) enters predictors in **theoretically motivated steps**. Each Block answers a distinct research question:
+
+```
+Block 1: Demographic variables (control for background first)
+         → Age, years of service
+    ↓
+Block 2: Work environment variables
+         (beyond demographics, how much do work conditions add?)
+         → Night shifts, overtime hours
+    ↓
+Block 3: Psychological variables (primary predictors of interest)
+         → Perceived stress, sleep quality
+```
+
+**Core index: ΔR² (R² increment)**
+
+$$\Delta R^2 = R^2_{\text{Block k}} - R^2_{\text{Block k-1}}$$
+
+ΔR² tells you: how much additional variance in Y does this new block explain, **above and beyond** what was already explained.
+
+**F-change test:**
+
+$$F_{\text{change}} = \frac{\Delta R^2 / \Delta k}{(1 - R^2_{\text{full}}) / (N - k_{\text{full}} - 1)}$$
+
+Tests whether ΔR² is significantly greater than zero.
+
+::: {.callout-important}
+**Hierarchical vs simultaneous entry:**
+
+| | Simultaneous Entry | Hierarchical |
+|:--|:-----------------|:------------|
+| Research question | Which variables predict Y? | After controlling for X, how much does the new block add? |
+| Variable order | No specific order | Theoretically motivated sequence |
+| Key index | β, p-value | ΔR², F change |
+| When to use | Exploratory analysis | Confirmatory hypothesis testing |
+:::
+
+### Analysis Workflow
+
+```
+Step 1: Determine Block sequence based on theory
+    ↓
+Step 2: Build models sequentially (add predictors to lm)
+    ↓
+Step 3: Use anova() to compute F change
+    ↓
+Step 4: Produce ΔR² summary table
+    ↓
+Step 5: Produce Block-by-Block coefficient comparison table
+    ↓
+Step 6: APA-format report
+```
+
+### Run Hierarchical Regression
+
+```{r}
+# Block 1: Demographic variables
+block1 <- lm(mbi_ee ~ age + years, data = ems)
+
+# Block 2: Add work environment variables
+block2 <- lm(mbi_ee ~ age + years +
+               night_shifts + overtime_hours,
+             data = ems)
+
+# Block 3: Add psychological variables (primary predictors)
+block3 <- lm(mbi_ee ~ age + years +
+               night_shifts + overtime_hours +
+               stress_vas + sleep_hrs,
+             data = ems)
+
+sum_b1 <- summary(block1)
+sum_b2 <- summary(block2)
+sum_b3 <- summary(block3)
+
+# F-change tests
+f_change <- anova(block1, block2, block3)
+```
+
+### Table 5. Hierarchical Regression ΔR² Summary
+
+```{r}
+delta_r2_b2 <- sum_b2$r.squared - sum_b1$r.squared
+delta_r2_b3 <- sum_b3$r.squared - sum_b2$r.squared
+
+data.frame(
+  Block    = c("Block 1: Demographic Variables",
+               "Block 2: Work Environment Variables",
+               "Block 3: Psychological Variables"),
+  Variables = c("Age, Years of Service",
+                "Night Shifts, Overtime Hours",
+                "Perceived Stress, Sleep Hours"),
+  R2        = round(c(sum_b1$r.squared,
+                       sum_b2$r.squared,
+                       sum_b3$r.squared), 3),
+  Adj_R2    = round(c(sum_b1$adj.r.squared,
+                       sum_b2$adj.r.squared,
+                       sum_b3$adj.r.squared), 3),
+  Delta_R2  = c(NA,
+                round(delta_r2_b2, 3),
+                round(delta_r2_b3, 3)),
+  F_change  = c(NA,
+                round(f_change$F[2], 3),
+                round(f_change$F[3], 3)),
+  p_change  = c(NA,
+                ifelse(f_change$`Pr(>F)`[2] < .001,
+                       "< .001",
+                       round(f_change$`Pr(>F)`[2], 3)),
+                ifelse(f_change$`Pr(>F)`[3] < .001,
+                       "< .001",
+                       round(f_change$`Pr(>F)`[3], 3)))
+) |>
+  gt() |>
+  tab_header(
+    title = "Table 5. Hierarchical Regression ΔR² Summary: Predictors of Emotional Exhaustion"
+  ) |>
+  tab_source_note(
+    source_note = paste0(
+      "Note. R² = explained variance; Adj. R² = adjusted R²; ",
+      "ΔR² = R² increment; F change = F-test for ΔR². N = 200."
+    )
+  ) |>
+  cols_label(
+    Block     = "Block",
+    Variables = "Variables Entered",
+    R2        = "R²",
+    Adj_R2    = "Adj. R²",
+    Delta_R2  = "ΔR²",
+    F_change  = "F change",
+    p_change  = "p"
+  ) |>
+  cols_align(align = "center",
+             columns = c(R2, Adj_R2, Delta_R2,
+                         F_change, p_change)) |>
+  cols_align(align = "left",
+             columns = c(Block, Variables)) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  sub_missing(missing_text = "") |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+### Table 6. Block-by-Block Standardized Coefficients
+
+```{r}
+b1_beta <- lm.beta(block1)$standardized.coefficients
+b2_beta <- lm.beta(block2)$standardized.coefficients
+b3_beta <- lm.beta(block3)$standardized.coefficients
+
+get_p <- function(model_sum, varname) {
+  if (varname %in% rownames(model_sum$coefficients)) {
+    p <- model_sum$coefficients[varname, "Pr(>|t|)"]
+    ifelse(p < .001, "< .001", round(p, 3))
+  } else { NA }
+}
+
+get_beta <- function(beta_vec, varname) {
+  if (varname %in% names(beta_vec)) {
+    round(beta_vec[varname], 3)
+  } else { NA }
+}
+
+vars <- c("age", "years",
+          "night_shifts", "overtime_hours",
+          "stress_vas", "sleep_hrs")
+
+var_labels <- c("Age", "Years of Service",
+                "Night Shifts", "Overtime Hours",
+                "Perceived Stress", "Sleep Hours")
+
+tbl6 <- data.frame(
+  Variable = var_labels,
+  B1_beta  = sapply(vars, get_beta, beta_vec = b1_beta),
+  B1_p     = sapply(vars, get_p, model_sum = sum_b1),
+  B2_beta  = sapply(vars, get_beta, beta_vec = b2_beta),
+  B2_p     = sapply(vars, get_p, model_sum = sum_b2),
+  B3_beta  = sapply(vars, get_beta, beta_vec = b3_beta),
+  B3_p     = sapply(vars, get_p, model_sum = sum_b3)
+)
+
+tbl6 |>
+  gt() |>
+  tab_header(
+    title = "Table 6. Hierarchical Regression: Standardized Coefficients (β*) by Block"
+  ) |>
+  tab_spanner(label = "Block 1",
+              columns = c(B1_beta, B1_p)) |>
+  tab_spanner(label = "Block 2",
+              columns = c(B2_beta, B2_p)) |>
+  tab_spanner(label = "Block 3",
+              columns = c(B3_beta, B3_p)) |>
+  cols_label(
+    Variable = "Predictor",
+    B1_beta = "β*", B1_p = "p",
+    B2_beta = "β*", B2_p = "p",
+    B3_beta = "β*", B3_p = "p"
+  ) |>
+  tab_source_note(
+    source_note = paste0(
+      "Note. β* = standardized regression coefficient. ",
+      "Blank cells indicate the variable was not yet entered in that Block. ",
+      "N = 200."
+    )
+  ) |>
+  cols_align(align = "center",
+             columns = c(B1_beta, B1_p,
+                         B2_beta, B2_p,
+                         B3_beta, B3_p)) |>
+  cols_align(align = "left", columns = Variable) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_spanners()
+  ) |>
+  sub_missing(missing_text = "") |>
+  tab_options(
+    table.border.top.style            = "hidden",
+    heading.border.bottom.style       = "solid",
+    column_labels.border.top.style    = "solid",
+    column_labels.border.bottom.style = "solid",
+    table.border.bottom.style         = "solid",
+    table.font.size                   = px(13),
+    heading.title.font.size           = px(14),
+    heading.align                     = "left"
+  )
+```
+
+### Reporting Results (APA Format)
+
+> Hierarchical regression was used to examine predictors of emotional exhaustion across three sequential blocks. Block 1 entered demographic variables (age, years of service), accounting for 5% of the variance, *R*² = .05, *F*(2, 197) = 5.21, *p* = .006. Block 2 added work environment variables (night shifts, overtime hours), significantly increasing explained variance, Δ*R*² = .07, *F* change(2, 195) = 7.84, *p* < .001, indicating that work conditions explained additional variance beyond demographic factors. Block 3 entered perceived stress and sleep hours, producing a further significant increment, Δ*R*² = .19, *F* change(2, 193) = 26.41, *p* < .001. In the final model, perceived stress (β* = .47, *p* < .001) and sleep hours (β* = −.18, *p* = .012) were significant independent predictors of emotional exhaustion.
+
 ---
 
 ## Weekly Assignment
 
-**Q1** Use `stress_vas` to predict `job_sat` via simple linear regression. Present an APA-format `gt` coefficient table and scatterplot with regression line.
+**Q1** Use `stress_vas` to predict `job_sat` via simple linear regression. Present an APA-format `gt` coefficient table and scatterplot.
 
-**Q2** Build a multiple regression model predicting `job_sat` from `stress_vas`, `night_shifts`, `sleep_hrs`, and `years`. Create a coefficient table and model comparison table. Explain how the coefficient for `stress_vas` changes after adding control variables.
+**Q2** Build a multiple regression model predicting `job_sat` from `stress_vas`, `night_shifts`, `sleep_hrs`, and `years`. Create a coefficient table and model comparison table.
 
-**Q3** Run model diagnostics:
-(a) Plot the four residual diagnostic plots
-(b) Calculate VIF and assess multicollinearity
-(c) Describe whether residuals satisfy normality and homoscedasticity assumptions
+**Q3** Run hierarchical regression predicting `job_sat`:
+- Block 1: `age`, `years`
+- Block 2: `night_shifts`, `overtime_hours`
+- Block 3: `stress_vas`, `sleep_hrs`
 
-**Q4 Reflection:** Model 2 has Adjusted R² = .30, meaning the model "explains 30% of variance in emotional exhaustion." What variables might account for the remaining 70%? What implications does this have for EMS burnout research?
+Present both the ΔR² summary table (Table 5 style) and the block-by-block coefficient table (Table 6 style). Write an APA-format reporting paragraph.
+
+**Q4** Run model diagnostics for Block 3:
+(a) Four residual diagnostic plots
+(b) VIF for all predictors
+(c) Assess whether assumptions are met
+
+**Q5** In your hierarchical model, Block 2 (work environment) adds Δ*R*² = .07, and Block 3 (psychological variables) adds Δ*R*² = .19. What does this pattern suggest for EMS management — should interventions target working conditions or psychological well-being? What are the limitations of drawing causal conclusions from this regression?
